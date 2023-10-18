@@ -19,7 +19,7 @@ export default function Header() {
     >
       <Box
         as='div'
-        pe={12}
+        pe={5}
         mt={{ base: 12, md: 8 }}
         w={{ base: "100%", md: "80%", lg: "50%" }}
       >
@@ -29,7 +29,7 @@ export default function Header() {
         >
           <Text
             lineHeight={1.3}
-            fontSize={{ base: "5xl", md: "6xl", lg: "7xl" }}
+            fontSize={{ base: "2.7rem", md: "6xl", lg: "7xl" }}
             fontWeight='bold'
             data-aos='fade-up'
           >
