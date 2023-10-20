@@ -1,13 +1,19 @@
-import { Box, Button } from "@chakra-ui/react";
-import Navbar from "@/components/navbar/Navbar";
-import { BsArrowRightShort } from "react-icons/bs";
-import Header from "@/components/sections/Header";
+import { Box } from "@chakra-ui/react";
+import ProductProvide from "@/components/sections/ProductProvide";
+import Benefit from "@/components/sections/Benefit";
+import WhyUs from "@/components/sections/WhyUs";
+import PriceList from "@/components/sections/PriceList";
 
 export default function Home() {
   return (
-    <Box as="main" px={{ base: 8, md: 10, lg: 16 }} py={5} >
-      <Navbar />
-      <Header />
+    <Box
+      as='main'
+      pb={5}
+    >
+      <ProductProvide />
+      <Benefit />
+      <WhyUs />
+      <PriceList />
     </Box>
   );
 }

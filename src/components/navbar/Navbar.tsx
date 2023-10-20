@@ -16,7 +16,7 @@ import DesktopMenuList from "./desktop-nav/DesktopMenuList";
 
 export default function Navbar() {
   const { onOpen, onClose, isOpen } = useDisclosure();
-  const [isGreaterThan768px] = useMediaQuery("(min-width: 768px)");
+  const [isGreaterThan800px] = useMediaQuery("(min-width: 800px)");
 
   return (
     <Box>
@@ -25,10 +25,10 @@ export default function Navbar() {
         w='full'
         justifyContent='space-between'
         alignItems='center'
-        py={{ lg: '18px' }}
+        py={{ lg: "18px" }}
       >
         <NavbarLogo />
-        {isGreaterThan768px ? (
+        {isGreaterThan800px ? (
           <DesktopMenuList />
         ) : (
           <IconButton

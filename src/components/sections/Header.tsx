@@ -4,7 +4,7 @@ import { Button, Stack, Text, Box, useMediaQuery } from "@chakra-ui/react";
 import { HiArrowRight as ArrowRightIcon } from "react-icons/hi2";
 import illustration from "../../../public/content.jpg";
 import { Image } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 export default function Header() {
   const [isGreaterThan800px] = useMediaQuery("(min-width: 800px)");
@@ -15,12 +15,14 @@ export default function Header() {
       display={{ base: "static", lg: "flex" }}
       gap={15}
       gridTemplateColumns={{ lg: "70% 1fr" }}
+      mt={{ lg: 5 }}
+      mb={{ base: 16, lg: 16 }}
+      px={{ lg: 2 }}
       w='100%'
     >
       <Box
         as='div'
-        pe={5}
-        mt={{ base: 12, md: 8 }}
+        mt={{ base: 12, md: 8, lg: 8 }}
         w={{ base: "100%", md: "80%", lg: "50%" }}
       >
         <Stack
@@ -33,13 +35,13 @@ export default function Header() {
             fontWeight='bold'
             data-aos='fade-up'
           >
-            Official Distributor Bimbel Online & Offline Ruang Guru
+            Official Partner Bimbel Online & Offline Ruang Guru
           </Text>
 
           <Text
             borderLeft='4px'
             borderColor='orange'
-            fontSize={{ base: "small", md: "medium" }}
+            fontSize={{ base: "medium", md: "medium" }}
             paddingLeft={3}
           >
             Kami menawarkan program pendidikan terbaik dari tim ahli Ruangguru.
@@ -64,7 +66,7 @@ export default function Header() {
           position='relative'
         >
           <Image
-            data-aos="fade-down"
+            data-aos='fade-down'
             ml={20}
             rounded='lg'
             h='380px'
