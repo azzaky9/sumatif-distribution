@@ -1,18 +1,7 @@
-"use client";
-
-import React, { useEffect } from "react";
-import { Box, Button, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Image, Stack, Text } from "@chakra-ui/react";
 import PriceList from "@/components/sections/PriceList";
-import { useRouter } from "next/navigation";
-
+ 
 export default function Page() {
-
-  const route = useRouter()
-
-  useEffect(() => {
-    route.push(`/ruang_belajar?jenjang=sd&kelas=1&month_duration=1`)    
-  }, [])
-
   return (
     <Box
       pt={{ base: 8 }}
