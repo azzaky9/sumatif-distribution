@@ -17,63 +17,49 @@ import {
   Stack
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { selectionLevelList } from "../sections/PriceList";
+import {
+  StatesTypes,
+  TSetStates,
+  selectionLevelList
+} from "../sections/PriceList";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-type StateSelection = {
-  jenjang: string;
-  kelas: string;
+type Props = {
+  isOpen: boolean;
+  handleOpen: () => void;
+  handleClose: () => void;
+  setter: TSetStates<StatesTypes>;
 };
 
-export default function ModalLevel(props: UseDisclosureProps) {
-  const { onClose, isOpen, onOpen } = props;
+export default function ModalLevel(props: Props) {
+  const { handleOpen, isOpen, handleClose, setter } = props;
 
-  const [currentSelection, setCurrentSelection] = useState<StateSelection>({
-    jenjang: "",
-    kelas: ""
-  });
-
-  const route = useRouter();
-  const params = useSearchParams();
   const path = usePathname();
+  const route = useRouter();
 
-  const savePrefference = () => {
-    console.log(currentSelection);
-  };
+  const [currentKelas, setCurrentKelas] = useState(1);
 
-  const setParamsandState = (jenjang: string, kelas?: string) => {
-    if (kelas) {
+  const updateQueryParams = () => {
+    if (typeof window !== "undefined") {
+      const currentPath = window.location.href.split("/")[3];
+
+      setter((prev) => ({ ...prev, kelas: String(currentKelas) }));
+
       route.push(
-        `/ruang_belajar?jenjang=${currentSelection.jenjang}&kelas=${kelas}`
+        `/ruang_belajar?jenjang=sd&kelas=${currentKelas}&month_duration=1`,
+        { scroll: false }
       );
 
-      return setCurrentSelection({ jenjang, kelas });
+      handleClose();
     }
-
-    route.push(`/ruang_belajar?jenjang=${jenjang}`);
-
-    setCurrentSelection((prev) => ({ ...prev, jenjang }));
   };
-
-  const handleClose = () => {
-    console.log("trigger");
-
-    route.push("/ruang_belajar");
-    onClose!();
-  };
-
-  useEffect(() => {
-    if (path === "/ruang_belajar") {
-      onOpen!();
-    }
-  }, [path]);
 
   return (
     <Modal
       isCentered
       onClose={handleClose}
       size='md'
-      isOpen={isOpen!}
+      isOpen={isOpen}
     >
       <ModalOverlay />
       <ModalContent>
@@ -92,31 +78,27 @@ export default function ModalLevel(props: UseDisclosureProps) {
             rowGap={6}
             columnGap={4}
           >
-            {params.get("jenjang") !== "sd" &&
-              selectionLevelList.map((list) => (
-                <Button
-                  onClick={() => setParamsandState(list.toLowerCase())}
-                  colorScheme='orange'
-                  variant='ghost'
-                  rounded='3xl'
-                  key={list}
-                >
-                  {list}
-                </Button>
-              ))}
-            {params.get("jenjang") === "sd" &&
-              [1, 2, 3, 4, 5, 6].map((item) => (
+            {[1, 2, 3, 4, 5, 6].map((kelas, index) => (
+              <Button
+                key={index}
+                variant='ghost'
+                colorScheme='orange'
+                onClick={() => setCurrentKelas(kelas)}
+              >
+                Kelas {kelas}
+              </Button>
+            ))}
+            {/* [1, 2, 3, 4, 5, 6].map((item) => (
                 <Button
                   key={item}
                   variant='ghost'
                   colorScheme='orange'
                   onClick={() =>
-                    setParamsandState(currentSelection.jenjang, String(item))
+                    console.log("any")
                   }
                 >
                   Kelas {item}
-                </Button>
-              ))}
+                </Button> */}
           </Box>
         </ModalBody>
         <ModalFooter>
@@ -125,17 +107,17 @@ export default function ModalLevel(props: UseDisclosureProps) {
             gap='2'
           >
             <Button
-              size='sm'
-              variant='solid'
+              size='md'
               colorScheme='orange'
-              onClick={savePrefference}
+              onClick={() => updateQueryParams()}
             >
               Save
             </Button>
             <Button
               onClick={handleClose}
-              size='sm'
-              variant='ghost'
+              size='md'
+              colorScheme='red'
+              variant='solid'
             >
               Close
             </Button>

@@ -2,7 +2,7 @@
 
 import React, { Fragment } from "react";
 import { Box, Text, Image } from "@chakra-ui/react";
-import brainacademyLogo from "../../../public/logo_BA.svg";
+import brainacademyLogo from "../../../public/images/logo_BA.svg";
 import { LiaSchoolSolid } from "react-icons/lia";
 
 export const productListCDNLink = [
@@ -27,7 +27,7 @@ export default function ProductProvide() {
   return (
     <Box
       backgroundColor='gray.50'
-      px={{ base: 10 }}
+      px={{ base: 6 }}
       py={{ base: "16" }}
     >
       <Text

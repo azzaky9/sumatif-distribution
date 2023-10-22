@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import {
   Box,
   Flex,
@@ -8,15 +9,18 @@ import {
   useDisclosure,
   useMediaQuery
 } from "@chakra-ui/react";
-import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import MobileDrawer from "./mobile-nav/MobileDrawer";
 import NavbarLogo from "./NavbarLogo";
 import DesktopMenuList from "./desktop-nav/DesktopMenuList";
 
 export default function Navbar() {
-  const { onOpen, onClose, isOpen } = useDisclosure();
+  const [isOpen, setIsOpen] = useState(false);
   const [isGreaterThan800px] = useMediaQuery("(min-width: 800px)");
+
+  const handleClose = () => setIsOpen(false);
+
+  const handleOpen = () => setIsOpen(true);
 
   return (
     <Box>
@@ -32,7 +36,7 @@ export default function Navbar() {
           <DesktopMenuList />
         ) : (
           <IconButton
-            onClick={onOpen}
+            onClick={handleOpen}
             aria-label='open-navigation-mobile'
             variant='solid'
             size='lg'
@@ -42,7 +46,8 @@ export default function Navbar() {
       </Flex>
       <MobileDrawer
         isOpen={isOpen}
-        onClose={onClose}
+        handleClose={handleClose}
+        handleOpen={handleOpen}
       />
     </Box>
   );

@@ -52,6 +52,7 @@ export default function WhyUs() {
     <Box
       px={{ base: 8, md: 10, lg: 16 }}
       py={{ base: 16 }}
+      id="why-us"
     >
       <Box>
         <Text

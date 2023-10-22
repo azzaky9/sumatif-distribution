@@ -1,0 +1,303 @@
+{
+  "sma": [
+    {
+      "title": "ruangbelajar SMA/SMK 1 Bulan",
+      "description": "Video pembelajaran interaktif, latihan soal, rangkuman infografis, dan fitur seru lainnya",
+      "fitur": [
+        {
+          "heading": "Yang kamu dapatkan di ruangbelajar",
+          "list_fitur": [
+            "ADAPTO: Satu-satunya video belajar interaktif di Indonesia. Bisa sesuaikan pemahaman siswa!",
+            ">65rb video belajar premium dengan ADAPTO",
+            ">400rb latihan soal serta pembahasan",
+            "Latihan Bab, Banksoal, dan Tryout PTS, PAS, US di ruanglatihan",
+            "Akses semua mata pelajaran 10-11-12 SMA/SMK",
+            "Rangkuman infografis di setiap bab",
+            "Playlist Belajar (Rencana belajar dari Master Teacher)",
+            "Download materi offline",
+            "Ruangguru Adventure & Teman Belajar",
+            "Laporan Belajar",
+            "Jadwal Belajar"
+          ]
+        }
+      ],
+      "group_by_month": "1",
+      "discount": "34%",
+      "price": {
+        "before_discount": "Rp 300.000",
+        "after_discount": "Rp 199.000"
+      }
+    },
+    {
+      "title": "ruangbelajar SMA/SMK 1 Bulan + Roboguru Plus Premium",
+      "description": "Akses semua fitur ruangbelajar + konsultasikan PR sulit ke Tutor sampai tuntas",
+      "fitur": [
+        {
+          "heading": "Yang kamu dapatkan di Roboguru Plus",
+          "list_fitur": [
+            "Persiapan UTBK/SNBT terlengkap, mulai dari strategi belajar hingga tryout dan evaluasi",
+            ">78rb video belajar adaptif (ADAPTO) serta strategi belajar untuk masuk PTN",
+            "20x Tryout IRT simulasi UTBK",
+            "Cek Peluang Lolos PTN 2023"
+          ]
+        },
+        {
+          "heading": "Yang kamu dapatkan di ruangbelajar",
+          "list_fitur": [
+            "ADAPTO: Satu-satunya video belajar interaktif di Indonesia. Bisa sesuaikan pemahaman siswa!",
+            "5 Koin Roboguru Plus untuk bertanya secara instan dengan Tutor Roboguru (Roboguru Expert)",
+            "GARANSI! Jawaban terverifikasi oleh Tutor Roboguru (Roboguru Expert) dalam 24 jam, hingga 5 pertanyaan (dengan 500 Golds Ruangguru)",
+            ">65rb video belajar premium dengan ADAPTO",
+            ">400rb latihan soal serta pembahasan",
+            "Latihan Bab, Banksoal, dan Tryout PTS, PAS, US di ruanglatihan",
+            "Akses semua mata pelajaran 10-11-12 SMA/SMK",
+            "Rangkuman infografis di setiap bab",
+            "Playlist Belajar (Rencana belajar dari Master Teacher)",
+            "Download materi offline",
+            "Ruangguru Adventure & Teman Belajar",
+            "Laporan Belajar",
+            "Jadwal Belajar"
+          ]
+        }
+      ],
+      "group_by_month": "1",
+      "discount": "34%",
+      "price": {
+        "before_discount": "Rp 450.000",
+        "after_discount": "Rp 299.000"
+      }
+    },
+    {
+      "title": "ruangbelajar SMA/SMK + UTBK (1 Bulan)",
+      "description": "Akses semua fitur ruangbelajar + persiapan masuk kampus, lengkap dengan Tes Skolastik",
+      "fitur": [
+        {
+          "heading": "Yang kamu dapatkan di UTBK",
+          "list_fitur": [
+            "25 Koin Roboguru Plus untuk bertanya secara instan dengan Tutor Roboguru (Roboguru Expert)",
+            "GARANSI! Jawaban terverifikasi oleh Tutor Roboguru (Roboguru Expert) dalam 24 jam, hingga 15 pertanyaan (dengan 1,500 Golds Ruangguru)"
+          ]
+        },
+        {
+          "heading": "Yang kamu dapatkan di ruangbelajar",
+          "list_fitur": [
+            "ADAPTO: Satu-satunya video belajar interaktif di Indonesia. Bisa sesuaikan pemahaman siswa!",
+            "UTBK Center + PELATNASUTBK",
+            ">400rb latihan soal serta pembahasan",
+            ">78rb video belajar premium dengan ADAPTO",
+            "Cek Peluang Lolos PTN 2023",
+            "Akses semua mata pelajaran 10-11-12 SMA/SMK",
+            "Latihan Bab, Banksoal, dan Tryout PTS, PAS, US di ruanglatihan",
+            "Rangkuman infografis di setiap bab",
+            "Playlist Belajar (Rencana belajar dari Master Teacher)",
+            "Download materi offline",
+            "Ruangguru Adventure & Teman Belajar",
+            "Laporan Belajar",
+            "Jadwal Belajar"
+          ]
+        }
+      ],
+      "group_by_month": "1",
+      "discount": "34%",
+      "price": {
+        "before_discount": "Rp 450.000",
+        "after_discount": "Rp 299.000"
+      }
+    },
+
+    {
+      "title": "ruangbelajar SMA/SMK + UTBK + Roboguru Plus Premium (1 Bulan)",
+      "description": "Akses semua fitur ruangbelajar + persiapan masuk kampus, lengkap dengan Tes Skolastik",
+      "fitur": [
+        {
+          "heading": "Yang kamu dapatkan di UTBK",
+          "list_fitur": [
+            "25 Koin Roboguru Plus untuk bertanya secara instan dengan Tutor Roboguru (Roboguru Expert)",
+            "GARANSI! Jawaban terverifikasi oleh Tutor Roboguru (Roboguru Expert) dalam 24 jam, hingga 15 pertanyaan (dengan 1,500 Golds Ruangguru)"
+          ]
+        },
+        {
+          "heading": "Yang kamu dapatkan di ruangbelajar",
+          "list_fitur": [
+            "ADAPTO: Satu-satunya video belajar interaktif di Indonesia. Bisa sesuaikan pemahaman siswa!",
+            "5 Koin Roboguru Plus untuk bertanya secara instan dengan Tutor Roboguru (Roboguru Expert)",
+            "GARANSI! Jawaban terverifikasi oleh Tutor Roboguru (Roboguru Expert) dalam 24 jam, hingga 5 pertanyaan (dengan 500 Golds Ruangguru)",
+            "UTBK Center + PELATNASUTBK",
+            "Tryout Basic & Premium ruanguji selama Tahun Ajaran 2022/2023",
+            ">400rb latihan soal serta pembahasan",
+            ">78rb video belajar premium dengan ADAPTO",
+            "Cek Peluang Lolos PTN 2023",
+            "TANPA BATAS! Liat jawaban terverifikasi di Roboguru oleh Master Teacher",
+            "TANPA BATAS! Liat video pembahasan di Roboguru sampai paham",
+            "TANPA IKLAN! Bebas akses Roboguru sepuasnya",
+            "Akses semua mata pelajaran 10-11-12 SMA/SMK",
+            "Latihan Bab, Banksoal, dan Tryout PTS, PAS, US di ruanglatihan",
+            "Rangkuman infografis di setiap bab",
+            "Playlist Belajar (Rencana belajar dari Master Teacher)",
+            "Download materi offline",
+            "Ruangguru Adventure & Teman Belajar",
+            "Laporan Belajar",
+            "Jadwal Belajar"
+          ]
+        }
+      ],
+      "group_by_month": "1",
+      "discount": "34%",
+      "price": {
+        "before_discount": "Rp 680.000",
+        "after_discount": "Rp 449.000"
+      }
+    },
+    {
+      "title": "ruangbelajar SMA/SMK (AY 23/24)",
+      "description": "Video pembelajaran interaktif, latihan soal, rangkuman infografis, dan fitur seru lainnya",
+      "fitur": [
+        {
+          "heading": "Yang kamu dapatkan di ruangbelajar",
+          "list_fitur": [
+            "ADAPTO: Satu-satunya video belajar interaktif di Indonesia. Bisa sesuaikan pemahaman siswa!",
+            ">65rb video belajar premium dengan ADAPTO",
+            ">400rb latihan soal serta pembahasan",
+            "Latihan Bab, Banksoal, dan Tryout PTS, PAS, US di ruanglatihan",
+            "Akses semua mata pelajaran 10-11-12 SMA/SMK",
+            "Rangkuman infografis di setiap bab",
+            "Playlist Belajar (Rencana belajar dari Master Teacher)",
+            "Download materi offline",
+            "Ruangguru Adventure & Teman Belajar",
+            "Laporan Belajar",
+            "Jadwal Belajar"
+          ]
+        }
+      ],
+      "group_by_month": "9",
+      "discount": "41%",
+      "price": {
+        "before_discount": "Rp 850.000",
+        "after_discount": "Rp 499.000"
+      }
+    },
+    {
+      "title": "ruangbelajar SMA/SMK + Roboguru Plus Premium (AY 23/24)",
+      "description": "Akses semua fitur ruangbelajar + konsultasikan PR sulit ke Tutor sampai tuntas",
+      "fitur": [
+        {
+          "heading": "Yang kamu dapatkan di Roboguru Plus",
+          "list_fitur": [
+            "Persiapan UTBK/SNBT terlengkap, mulai dari strategi belajar hingga tryout dan evaluasi",
+            ">78rb video belajar adaptif (ADAPTO) serta strategi belajar untuk masuk PTN",
+            "20x Tryout IRT simulasi UTBK",
+            "Cek Peluang Lolos PTN 2023"
+          ]
+        },
+        {
+          "heading": "Yang kamu dapatkan di ruangbelajar",
+          "list_fitur": [
+            "ADAPTO: Satu-satunya video belajar interaktif di Indonesia. Bisa sesuaikan pemahaman siswa!",
+            "25 Koin Roboguru Plus untuk bertanya secara instan dengan Tutor Roboguru (Roboguru Expert)",
+            "GARANSI! Jawaban terverifikasi oleh Tutor Roboguru (Roboguru Expert) dalam 24 jam, hingga 20 pertanyaan (dengan 2,000 Golds Ruangguru)",
+            ">65rb video belajar premium dengan ADAPTO",
+            ">400rb latihan soal serta pembahasan",
+            "TANPA BATAS! Liat jawaban terverifikasi di Roboguru oleh Master Teacher",
+            "TANPA BATAS! Liat video pembahasan di Roboguru sampai paham",
+            "TANPA IKLAN! Bebas akses Roboguru sepuasnya",
+            "Latihan Bab, Banksoal, dan Tryout PTS, PAS, US di ruanglatihan",
+            "Akses semua mata pelajaran 10-11-12 SMA/SMK",
+            "Rangkuman infografis di setiap bab",
+            "Playlist Belajar (Rencana belajar dari Master Teacher)",
+            "Download materi offline",
+            "Ruangguru Adventure & Teman Belajar",
+            "Laporan Belajar",
+            "Jadwal Belajar"
+          ]
+        }
+      ],
+      "group_by_month": "9",
+      "discount": "43%",
+      "price": {
+        "before_discount": "Rp 1.400.000",
+        "after_discount": "Rp 799.000"
+      }
+    },
+    {
+      "title": "ruangbelajar SMA/SMK + UTBK (AY 23/24)",
+      "description": "Akses semua fitur ruangbelajar + persiapan masuk kampus, lengkap dengan Tes Skolastik",
+      "fitur": [
+        {
+          "heading": "Yang kamu dapatkan di UTBK ",
+          "list_fitur": [
+            "25 Koin Roboguru Plus untuk bertanya secara instan dengan Tutor Roboguru (Roboguru Expert)",
+            "GARANSI! Jawaban terverifikasi oleh Tutor Roboguru (Roboguru Expert) dalam 24 jam, hingga 15 pertanyaan (dengan 1,500 Golds Ruangguru)"
+          ]
+        },
+        {
+          "heading": "Yang kamu dapatkan di ruangbelajar",
+          "list_fitur": [
+            "ADAPTO: Satu-satunya video belajar interaktif di Indonesia. Bisa sesuaikan pemahaman siswa!",
+            "UTBK Center + PELATNASUTBK",
+            "15x Tryout Basic ruanguji & 5x Tryout Premium ruanguji UTBK-SNBT",
+            ">400rb latihan soal serta pembahasan",
+            ">78rb video belajar premium dengan ADAPTO",
+            "Cek Peluang Lolos PTN",
+            "Akses semua mata pelajaran 10-11-12 SMA/SMK",
+            "Latihan Bab, Banksoal, dan Tryout PTS, PAS, US di ruanglatihan",
+            "Rangkuman infografis di setiap bab",
+            "Playlist Belajar (Rencana belajar dari Master Teacher)",
+            "Download materi offline",
+            "Ruangguru Adventure & Teman Belajar",
+            "Laporan Belajar",
+            "Jadwal Belajar"
+          ]
+        }
+      ],
+      "group_by_month": "9",
+      "discount": "43%",
+      "price": {
+        "before_discount": "Rp 1.400.000",
+        "after_discount": "Rp 799.000"
+      }
+    },
+    {
+      "title": "ruangbelajar SMA/SMK + UTBK + Roboguru Plus Premium (AY 23/24)",
+      "description": "Akses semua fitur ruangbelajar + persiapan masuk kampus, lengkap dengan Tes Skolastik",
+      "fitur": [
+        {
+          "heading": "Yang kamu dapatkan di UTBK",
+          "list_fitur": [
+            "25 Koin Roboguru Plus untuk bertanya secara instan dengan Tutor Roboguru (Roboguru Expert)",
+            "GARANSI! Jawaban terverifikasi oleh Tutor Roboguru (Roboguru Expert) dalam 24 jam, hingga 15 pertanyaan (dengan 1,500 Golds Ruangguru)"
+          ]
+        },
+        {
+          "heading": "Yang kamu dapatkan di ruangbelajar",
+          "list_fitur": [
+            "ADAPTO: Satu-satunya video belajar interaktif di Indonesia. Bisa sesuaikan pemahaman siswa!",
+            "25 Koin Roboguru Plus untuk bertanya secara instan dengan Tutor Roboguru (Roboguru Expert)",
+            "GARANSI! Jawaban terverifikasi oleh Tutor Roboguru (Roboguru Expert) dalam 24 jam, hingga 10 pertanyaan (dengan 1,000 Golds Ruangguru)",
+            "UTBK Center + PELATNASUTBK",
+            "15x Tryout Basic ruanguji & 5x Tryout Premium ruanguji UTBK-SNBT",
+            ">400rb latihan soal serta pembahasan",
+            ">78rb video belajar premium dengan ADAPTO",
+            "Cek Peluang Lolos PTN",
+            "TANPA BATAS! Liat jawaban terverifikasi di Roboguru oleh Master Teacher",
+            "TANPA BATAS! Liat video pembahasan di Roboguru sampai paham",
+            "TANPA IKLAN! Bebas akses Roboguru sepuasnya",
+            "Akses semua mata pelajaran 10-11-12 SMA/SMK",
+            "Latihan Bab, Banksoal, dan Tryout PTS, PAS, US di ruanglatihan",
+            "Rangkuman infografis di setiap bab",
+            "Playlist Belajar (Rencana belajar dari Master Teacher)",
+            "Download materi offline",
+            "Ruangguru Adventure & Teman Belajar",
+            "Laporan Belajar",
+            "Jadwal Belajar"
+          ]
+        }
+      ],
+      "group_by_month": "9",
+      "discount": "45%",
+      "price": {
+        "before_discount": "Rp 1.900.000",
+        "after_discount": "Rp 1.049.000"
+      }
+    }
+  ]
+}

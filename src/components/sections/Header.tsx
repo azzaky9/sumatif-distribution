@@ -2,7 +2,7 @@
 
 import { Button, Stack, Text, Box, useMediaQuery } from "@chakra-ui/react";
 import { HiArrowRight as ArrowRightIcon } from "react-icons/hi2";
-import illustration from "../../../public/content.jpg";
+import illustration from "../../../public/images/content.jpg";
 import { Image } from "@chakra-ui/react";
 // import { motion } from "framer-motion";
 
@@ -11,13 +11,14 @@ export default function Header() {
 
   return (
     <Box
-      as='div'
+      id='home'
+      as='header'
       display={{ base: "static", lg: "flex" }}
       gap={15}
       gridTemplateColumns={{ lg: "70% 1fr" }}
       mt={{ lg: 5 }}
       mb={{ base: 16, lg: 16 }}
-      px={{ lg: 2 }}
+      px={{ base: 4, lg: 2 }}
       w='100%'
     >
       <Box

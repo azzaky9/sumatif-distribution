@@ -15,7 +15,6 @@ export default function Home() {
       <ProductProvide />
       <Benefit />
       <WhyUs />
-      <PriceList />
     </Box>
   );
 }

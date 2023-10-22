@@ -7,7 +7,8 @@ import { FaRegSmileBeam } from "react-icons/fa";
 export default function Benefit() {
   return (
     <Box
-      px={{ base: "25px" }}
+      id="benefits"
+      px={{ base: "18px" }}
       py={{ base: "58px" }}
     >
       <Box

@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Providers as ChakraUiProvider } from "@/provider-configs/chakraui/ChakraProvider";
 import Navbar from "@/components/navbar/Navbar";
 import { Box } from "@chakra-ui/react";
+import { PriceProvider } from "@/context/PriceContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,13 +22,15 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.className}>
         <ChakraUiProvider>
-          <Box
-            px={{ base: 4, md: 10, lg: 16 }}
-            pt={5}
-          >
-            <Navbar />
-          </Box>
-          {children}
+          <PriceProvider>
+            <Box
+              px={{ base: 4, md: 10, lg: 16 }}
+              pt={5}
+            >
+              <Navbar />
+            </Box>
+            {children}
+          </PriceProvider>
         </ChakraUiProvider>
       </body>
     </html>
