@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import NavbarLogo from "../NavbarLogo";
+import { useRouter } from "next/navigation";
 
 type Props = {
   handleClose: () => void;
@@ -43,15 +44,18 @@ export default function MobileDrawer(props: Props) {
 
   const anchorEl = useRef<HTMLAnchorElement | null>(null);
 
+  const route = useRouter();
+
   const handleLinkClick = (linkTo: string) => {
     const specificSection = document.querySelector(linkTo);
-
-    console.log(specificSection);
-
     handleClose();
 
     setTimeout(() => {
-      specificSection?.scrollIntoView({ behavior: "smooth" });
+      if (specificSection) {
+        specificSection?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        route.push("/");
+      }
     }, 200);
   };
 
@@ -84,11 +88,6 @@ export default function MobileDrawer(props: Props) {
           ))}
         </DrawerBody>
       </DrawerContent>
-      {/* <a
-        ref={anchorEl}
-        href={keepPosition}
-        style={{ position: "absolute", opacity: 0, top: "-120px" }}
-      /> */}
     </Drawer>
   );
 }

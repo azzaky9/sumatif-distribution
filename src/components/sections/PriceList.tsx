@@ -44,8 +44,6 @@ export default function PriceList() {
   const getQueryKelas = params.get("kelas");
   const getQueryMonth = params.get("month_duration");
 
-  console.log(typeof getQueryMonth);
-
   const filteredData =
     getQueryJenjang &&
     datas[getQueryJenjang][
@@ -55,8 +53,6 @@ export default function PriceList() {
           getQueryKelas ? `kelas_${getQueryKelas}` : getQueryJenjang
         ].filter((data) => data.group_by_month === getQueryMonth ?? "1")
       : [];
-
-  console.log(filteredData);
 
   const handleCloseModal = () => {
     setIsModalKelasOpen(false);
@@ -77,7 +73,7 @@ export default function PriceList() {
   };
 
   const saveMonthprefference = () => {
-    if (params.get("sd")) {
+    if (currentSelection.jenjang === "sd") {
       route.push(
         `/ruang_belajar?jenjang=${currentSelection.jenjang}&kelas=${
           currentSelection.kelas
@@ -126,8 +122,6 @@ export default function PriceList() {
     handleOpen: handleOpenModal,
     setter: setCurrentSelection
   };
-
-  console.log(currentSelection.monthDuration);
 
   useEffect(() => {
     route.push(`/ruang_belajar?jenjang=sd&kelas=1&month_duration=1`);
@@ -202,6 +196,7 @@ export default function PriceList() {
           {filteredData.length !== 0 ? (
             filteredData.map((data, index) => (
               <CardPrice
+                hideBuyButton={false}
                 key={index}
                 data={data}
               />

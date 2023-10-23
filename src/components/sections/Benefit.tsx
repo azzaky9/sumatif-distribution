@@ -7,7 +7,7 @@ import { FaRegSmileBeam } from "react-icons/fa";
 export default function Benefit() {
   return (
     <Box
-      id="benefits"
+      id='benefits'
       px={{ base: "18px" }}
       py={{ base: "58px" }}
     >
@@ -17,7 +17,6 @@ export default function Benefit() {
         justifyContent={{ base: "center" }}
         alignItems={{ base: "center" }}
       >
-        <FaRegSmileBeam style={{ fontSize: "1.5rem", color: "orange" }} />
         <Text
           mt={4}
           fontSize='2xl'

@@ -3,7 +3,7 @@
 import React, { Fragment } from "react";
 import { Box, Text, Image } from "@chakra-ui/react";
 import brainacademyLogo from "../../../public/images/logo_BA.svg";
-import { LiaSchoolSolid } from "react-icons/lia";
+import { FaChalkboardTeacher } from "react-icons/fa";
 
 export const productListCDNLink = [
   {
@@ -18,7 +18,7 @@ export const productListCDNLink = [
   },
   {
     alt: "onsite_learning",
-    link: LiaSchoolSolid,
+    link: FaChalkboardTeacher,
     as: "icon"
   }
 ];
@@ -46,6 +46,7 @@ export default function ProductProvide() {
           <Fragment key={index}>
             {product.as === "image" && (
               <Image
+                key={index}
                 filter='grayscale(1)'
                 width={{ base: "160px" }}
                 height={{ base: "80px" }}

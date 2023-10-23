@@ -1,14 +1,17 @@
 "use client";
 
-import { useContext, createContext } from "react";
+import { useContext, createContext, useState } from "react";
 import sdPriceList from "../../public/cms_content/product/rb_sd.json";
 import smpPriceList from "../../public/cms_content/product/rb_smp.json";
 import smaPriceList from "../../public/cms_content/product/rb_sma.json";
 import utbksnbtPriceList from "../../public/cms_content/product/rb_utbk_snbt.json";
 import { useSearchParams } from "next/navigation";
+import { TSetStates } from "@/components/sections/PriceList";
 
 type InitialPriceCtx = {
   allData: unknown;
+  productSelection: PackageSchema | null;
+  setProductSelection: TSetStates<PackageSchema | null>;
 };
 
 const PriceContext = createContext({} as InitialPriceCtx);
@@ -34,7 +37,7 @@ type PackageSchema = {
 
 type PricePackage = {
   [x: string]: {
-    [x: string]: PackageSchema[]
+    [x: string]: PackageSchema[];
   };
 };
 
@@ -48,16 +51,17 @@ function PriceProvider({ children }: Props) {
     smp: smpPriceList,
     sma: smaPriceList,
     snbt: utbksnbtPriceList
-  }
+  };
 
-   console.log(allData)
-
-  const data = sdPriceList;
+  const [productSelection, setProductSelection] =
+    useState<PackageSchema | null>(null);
 
   return (
     <PriceContext.Provider
       value={{
         allData,
+        productSelection,
+        setProductSelection
       }}
     >
       {children}

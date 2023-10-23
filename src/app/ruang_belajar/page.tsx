@@ -1,6 +1,6 @@
 import { Box, Image, Stack, Text } from "@chakra-ui/react";
 import PriceList from "@/components/sections/PriceList";
- 
+
 export default function Page() {
   return (
     <Box

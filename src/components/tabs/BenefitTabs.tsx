@@ -2,7 +2,6 @@
 
 import { Tabs, TabList, Tab, TabPanels, Image, Button } from "@chakra-ui/react";
 import { productListCDNLink } from "../sections/ProductProvide";
-import { LiaSchoolSolid } from "react-icons/lia";
 import GetPanel from "./GetPanel";
 
 export default function BenefitTabs() {

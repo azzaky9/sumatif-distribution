@@ -15,15 +15,27 @@ import {
   Box,
   List,
   ListItem,
-  ListIcon
+  ListIcon,
+  useFocusOnPointerDown
 } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import { MdCheckCircle } from "react-icons/md";
 
 type Props = {
   data: PackageSchema;
+  hideBuyButton?: boolean;
 };
 
-export default function CardPrice({ data }: Props) {
+export default function CardPrice({ data, hideBuyButton }: Props) {
+  const { setProductSelection } = usePrice();
+  const route = useRouter();
+
+  const handleBuyProduct = () => {
+    setProductSelection(data);
+
+    route.push("/payment");
+  };
+
   return (
     <Card
       rounded='2xl'
@@ -88,14 +100,17 @@ export default function CardPrice({ data }: Props) {
       </CardBody>
       <Divider color={{ base: "gray.300" }} />
       <CardFooter>
-        <ButtonGroup spacing='2'>
-          <Button
-            variant='solid'
-            colorScheme='orange'
-          >
-            Buy now
-          </Button>
-        </ButtonGroup>
+        {typeof hideBuyButton !== "undefined" && !hideBuyButton ? (
+          <ButtonGroup spacing='2'>
+            <Button
+              variant='solid'
+              colorScheme='orange'
+              onClick={handleBuyProduct}
+            >
+              Buy now
+            </Button>
+          </ButtonGroup>
+        ) : null}
       </CardFooter>
     </Card>
   );

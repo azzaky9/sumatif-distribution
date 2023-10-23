@@ -51,7 +51,7 @@ export default function WhyUs() {
   return (
     <Box
       px={{ base: 8, md: 10, lg: 16 }}
-      py={{ base: 16 }}
+      py={{ base: 8 }}
       id="why-us"
     >
       <Box>
