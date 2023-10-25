@@ -40,11 +40,14 @@ export default function GetPanel(props: Props) {
           {mapDataByKey[panelType].title}
         </Text>
       ) : null}
-      <Text fontSize='sm'>{mapDataByKey[panelType].description}</Text>
+      <Text fontSize={{ base: "sm", md: "md" }}>
+        {mapDataByKey[panelType].description}
+      </Text>
       <Box
         my={{ base: 8 }}
-        h={300}
-        overflow='scroll'
+        overflowX='hidden'
+        h={{ base: 300, md: "full", lg: 320 }}
+        overflowY={{ base: "scroll", md: "unset", lg: "scroll" }}
       >
         <List spacing={3}>
           {mapDataByKey[panelType].benefits.map((benefit, index) => (
@@ -58,7 +61,7 @@ export default function GetPanel(props: Props) {
                 <Box
                   as='span'
                   color='gray.500  '
-                  fontSize='sm'
+                  fontSize={{ base: "sm" }}
                 >
                   {benefit.description}
                 </Box>

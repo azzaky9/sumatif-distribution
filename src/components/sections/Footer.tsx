@@ -6,12 +6,12 @@ import { TiLocation } from "react-icons/ti";
 
 const renderingLoopMapping = [
   {
-    icons: <SiGmail style={{ fontSize: "1.4rem", color: "white" }}  />,
+    icons: <SiGmail style={{ fontSize: "1.4rem", color: "white" }} />,
     text: "ptsumatif@gmail.com"
   },
 
   {
-    icons: <TiLocation style={{ fontSize: "2.3rem", color: "white" }} />,
+    icons: <TiLocation style={{ fontSize: "1.4rem", color: "white" }} />,
     text: "Jalan Suka Eka Medan Johor Nomor 11 Medan Sumatera Utara"
   }
 ];
@@ -21,13 +21,16 @@ export default function Footer() {
     <Box
       bg={{ base: "gray.700" }}
       px={{ base: 8 }}
-      py={{ base: 8 }}
+      py={{ base: 16 }}
       mt={{ base: 2 }}
+      display={{ base: "grid" }}
+      placeContent={{ base: "center" }}
     >
       <Heading
         fontSize='2xl'
         mb={{ base: 4 }}
         color='gray.400'
+        textAlign={{ base: "center" }}
       >
         Sumatif
       </Heading>
@@ -35,21 +38,24 @@ export default function Footer() {
         width='full'
         maxWidth={{ base: "320px" }}
         direction='column'
-        gap={{ base: 6 }}
+        justifyContent={{ base: "center" }}
+        alignItems={{ base: "center" }}
+        gap={{ base: 2 }}
       >
         {renderingLoopMapping.map((item, index) => (
-          <Flex
+          <Box
+            display="flex"
+
             key={index}
-            gap={4}
           >
-            {item.icons}
             <Text
               color={{ base: "gray.500" }}
               fontSize='sm'
+              textAlign="center"
             >
               {item.text}
             </Text>
-          </Flex>
+          </Box>
         ))}
       </Flex>
     </Box>

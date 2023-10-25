@@ -11,18 +11,29 @@ export default function PriceHomepage() {
 
   return (
     <Box
-      my={{ base: 8 }}
+      my={{ base: 8, md: 14 }}
       px={{ base: 4 }}
-      pb={{ base: 4 }}
+      pb={{ base: 4, md: 10 }}
       display='grid'
       placeContent='center'
       textAlign='center'
     >
       <Heading fontSize='2xl'>Price</Heading>
-      <Text fontSize='sm'>
-        Dengan harga terjangkau dan layanan komprehensif, kami bekerja sama
-        untuk memberikan nilai maksimal untuk investasi dalam pendidikan.
-      </Text>
+      <Box
+        w={{ base: "full" }}
+        display='flex'
+        justifyContent='center'
+        alignItems='center'
+      >
+        <Text
+          fontSize='sm'
+          color='gray.500'
+          w={{ md: "80%" }}
+        >
+          Dengan harga terjangkau dan layanan komprehensif, kami bekerja sama
+          untuk memberikan nilai maksimal untuk investasi dalam pendidikan.
+        </Text>
+      </Box>
       <Flex
         direction={{ base: "row" }}
         gap={{ base: 8 }}

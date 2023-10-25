@@ -5,6 +5,7 @@ import { Providers as ChakraUiProvider } from "@/provider-configs/chakraui/Chakr
 import Navbar from "@/components/navbar/Navbar";
 import { Box } from "@chakra-ui/react";
 import { PriceProvider } from "@/context/PriceContext";
+import Footer from "@/components/sections/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
               <Navbar />
             </Box>
             {children}
+            <Footer />
           </PriceProvider>
         </ChakraUiProvider>
       </body>

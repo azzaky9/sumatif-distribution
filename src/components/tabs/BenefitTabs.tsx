@@ -5,6 +5,7 @@ import { productListCDNLink } from "../sections/ProductProvide";
 import GetPanel from "./GetPanel";
 
 export default function BenefitTabs() {
+
   return (
     <>
       <Tabs
@@ -38,13 +39,7 @@ export default function BenefitTabs() {
           />
         </TabPanels>
       </Tabs>
-      <Button
-        colorScheme='orange'
-        variant='outline'
-        size='sm'
-      >
-        Berlanggan Sekarang
-      </Button>
+     
     </>
   );
 }

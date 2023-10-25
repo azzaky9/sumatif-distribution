@@ -29,7 +29,7 @@ export default function Navbar() {
         w='full'
         justifyContent='space-between'
         alignItems='center'
-        py={{ lg: "18px" }}
+        py={{ md: "20px", lg: "18px",  }}
       >
         <NavbarLogo />
         {isGreaterThan800px ? (

@@ -1,40 +1,75 @@
 "use client";
 
-import { Box, Button, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  SimpleGrid,
+  Text,
+  Flex,
+  Image
+} from "@chakra-ui/react";
 import BenefitTabs from "../tabs/BenefitTabs";
 import { FaRegSmileBeam } from "react-icons/fa";
+import BenefitsImage from "../../../public/images/benefit_section.webp";
 
 export default function Benefit() {
   return (
-    <Box
+    <Flex
+      position='relative'
       id='benefits'
-      px={{ base: "18px" }}
-      py={{ base: "58px" }}
+      px={{ base: "20px", md: "52px" }}
+      py={{ base: "58px", lg: "120px" }}
+      direction={{ base: "column", lg: "row" }}
+      justifyContent='center'
+      alignItems='center'
+      gap={{ base: "40px", lg: "80px" }}
     >
-      <Box
-        display='flex'
-        flexDirection={{ base: "column" }}
-        justifyContent={{ base: "center" }}
-        alignItems={{ base: "center" }}
-      >
-        <Text
-          mt={4}
-          fontSize='2xl'
-          textAlign='center'
-          fontWeight='semibold'
-        >
-          Benefit & Keunggulan
-        </Text>
-        <Text
-          fontSize='md'
-          textAlign='center'
-        >
-          Setiap product memiliki keunggulan dan benefit tersendiri yang dapat
-          di sesuaikan dengan keinginan Siswa / Mahasiswa
-        </Text>
-      </Box>
+      <Box position='relative'>
+        <Box
+          w={650}
+          h={500}
+          border='2px'
+          zIndex='-1'
+          borderColor='orange.500'
+          rounded='2xl'
+          position='absolute'
+          left="-10"
+          top="12"
+        />
 
-      <BenefitTabs />
-    </Box>
+        <Image
+          alt='Benefit_section_picture'
+          src={BenefitsImage.src}
+          width={650}
+          height={500}
+        />
+      </Box>
+      <Box w={{ lg: "42%" }}>
+        <Box
+          display='flex'
+          flexDirection={{ base: "column" }}
+          justifyContent={{ base: "center", md: "start" }}
+          alignItems={{ base: "center" }}
+        >
+          <Heading
+            fontSize={{ base: "2xl", lg: "2xl" }}
+            textAlign={{ base: "center", lg: "start" }}
+            w={{ md: "85%", lg: "full" }}
+          >
+            Setiap product memiliki keunggulan dan benefit tersendiri yang dapat
+            di sesuaikan dengan keinginan Siswa / Mahasiswa
+          </Heading>
+        </Box>
+
+        <BenefitTabs />
+        <Button
+          variant={{ base: "outline", md: "solid" }}
+          size='md'
+        >
+          Berlanggan Sekarang
+        </Button>
+      </Box>
+    </Flex>
   );
 }

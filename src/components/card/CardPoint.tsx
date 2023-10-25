@@ -21,17 +21,20 @@ export default function CardPoint(props: Props) {
   const { icons, title, description } = props;
 
   return (
-    <Card variant='elevated'>
+    <Card
+      px={{ lg: 6 }}
+      py={{ lg: 4 }}
+      variant={{ base: "elevated", lg: "outline" }}
+    >
       <CardBody>
         <Box
           as='div'
           w='fit-content'
           py='3'
           px='3.5'
-          bgColor={{ base: "orange.100" }}
+          bgColor={{ base: "orange.50" }}
           rounded='md'
-          color='orange.700'
-          border='1px solid orange'
+          color='orange.600'
         >
           {icons}
         </Box>
@@ -41,7 +44,12 @@ export default function CardPoint(props: Props) {
         >
           {title}
         </Heading>
-        <Text fontSize="sm" >{description}</Text>
+        <Text
+          fontSize='sm'
+          color='gray.500'
+        >
+          {description}
+        </Text>
       </CardBody>
     </Card>
   );

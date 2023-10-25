@@ -28,7 +28,7 @@ export default function WhyUs() {
     />,
     <BsFolder2Open
       style={{ fontSize: "1.2rem" }}
-      key='id_three'
+      key=''
     />,
     <TbFileLike
       style={{ fontSize: "1.2rem" }}
@@ -51,12 +51,19 @@ export default function WhyUs() {
   return (
     <Box
       px={{ base: 8, md: 10, lg: 16 }}
-      py={{ base: 8 }}
-      id="why-us"
+      py={{ base: 20 }}
+      id='why-us'
+      bg='gray.50'
     >
-      <Box>
+      <Box
+        w='full'
+        justifyContent={{ base: "center" }}
+        alignItems={{ base: "center" }}
+        pb={{ base: 8 }}
+        py={{ base: 10 }}
+      >
         <Text
-          fontSize='xl'
+          fontSize={{ base: "xl", md: "xl", lg: "3xl" }}
           textAlign='center'
           fontWeight='bold'
         >
@@ -65,7 +72,8 @@ export default function WhyUs() {
       </Box>
       <SimpleGrid
         pt={4}
-        columns={{ base: 1 }}
+        px={5}
+        columns={{ base: 1, md: 3 }}
         spacing={{ base: 10 }}
       >
         {!isGreaterThan425px

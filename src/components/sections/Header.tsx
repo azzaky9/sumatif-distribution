@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { Button, Stack, Text, Box, useMediaQuery } from "@chakra-ui/react";
 import { HiArrowRight as ArrowRightIcon } from "react-icons/hi2";
@@ -18,7 +18,7 @@ export default function Header() {
       gridTemplateColumns={{ lg: "70% 1fr" }}
       mt={{ lg: 5 }}
       mb={{ base: 16, lg: 16 }}
-      px={{ base: 4, lg: 2 }}
+      px={{ base: 4, md: 8, lg: 20 }}
       w='100%'
     >
       <Box
@@ -34,7 +34,7 @@ export default function Header() {
             lineHeight={1.3}
             fontSize={{ base: "2.7rem", md: "6xl", lg: "7xl" }}
             fontWeight='bold'
-            data-aos='fade-up'
+            
           >
             Official Partner Bimbel Online & Offline Ruang Guru
           </Text>
@@ -42,6 +42,7 @@ export default function Header() {
           <Text
             borderLeft='4px'
             borderColor='orange'
+            color="gray.500"
             fontSize={{ base: "medium", md: "medium" }}
             paddingLeft={3}
           >
