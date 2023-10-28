@@ -7,14 +7,24 @@ export default function Page() {
       pt={{ base: 8 }}
       px={{ base: 2 }}
     >
-      <Box px={{ base: 4 }}>
+      <Box
+        px={{ base: 4, lg: 8 }}
+        display={{ lg: "flex" }}
+        flexDirection={{ lg: "column" }}
+        justifyContent={{ lg: "center" }}
+        alignItems={{ lg: "center" }}
+      >
         <Image
-          w='36'
-          h='16'
+          w={{ base: "36", lg: "56" }}
+          h={{ base: "16", lg: "16" }}
           src='https://cdn-web-2.ruangguru.com/landing-pages/assets/hs/OPTIMIZE/rb.svg'
           alt='ruang_belajar_icons'
         />
-        <Text fontSize='small'>
+        <Text
+          fontSize={{ base: "small" }}
+          w={{ lg: "80%" }}
+          textAlign={{ lg: "center" }}
+        >
           Temukan berbagai pilihan paket pembelajaran online di Ruangbelajar
           yang terjangkau dan komprehensif. Mulai dari Paket SD hingga persiapan
           UTBK-SNBT untuk seleksi PTN, Ruangbelajar memberikan akses ke ribuan
@@ -25,8 +35,10 @@ export default function Page() {
       </Box>
       <Stack
         mt={{ base: 4 }}
-        direction={{ base: "column" }}
+        direction={{ base: "column", lg: "row" }}
         gap={8}
+        display={{ lg: "grid" }}
+        placeContent={{ lg: "center" }}
       >
         <PriceList />
       </Stack>

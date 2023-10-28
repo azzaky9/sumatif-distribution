@@ -12,18 +12,20 @@ export default function Page() {
     <Box
       px={{ base: 4 }}
       py={{ base: 4 }}
+      pb={{ lg: "28" }}
       mt={{ base: 8 }}
     >
       <Flex
         gap={8}
-        direction={{ base: "column" }}
+        direction={{ base: "column", lg: "row" }}
+        justifyContent={{ base: "center" }}
       >
-        {productSelection ? (
+        {/* {productSelection ? (
           <CardPrice
             data={productSelection}
             hideBuyButton
           />
-        ) : null}
+        ) : null} */}
         <FormBuyProduct />
       </Flex>
     </Box>

@@ -1,30 +1,43 @@
 "use client";
 
-import React, {
-  ChangeEvent,
-  useState,
-  Dispatch,
-  SetStateAction,
-  useEffect
-} from "react";
-import { Box, Button, Stack, Text, useDisclosure } from "@chakra-ui/react";
+import React, { useState, Dispatch, SetStateAction, useEffect } from "react";
+import {
+  Box,
+  Button,
+  Flex,
+  Spinner,
+  Stack,
+  Text,
+  useDisclosure
+} from "@chakra-ui/react";
 import ModalLevel from "../modal/ModalLevel";
 import CardPrice from "../card/CardPrice";
 import { usePrice, PricePackage } from "@/context/PriceContext";
 import CustomMenuBtn from "../button-menu/CustomMenuBtn";
 import { useRouter, useSearchParams } from "next/navigation";
+import {
+  useQuery,
+  RefetchOptions,
+  RefetchQueryFilters,
+  QueryObserverResult
+} from "react-query";
+import { ResponseShema, ProductPackage } from "./PriceHomepage";
 
 type TSetStates<T> = Dispatch<SetStateAction<T>>;
 type CurrentSelection = "Ruang Belajar" | "Brain Academy";
 
 const selectionProductList = ["Ruang Belajar", "Brain Academy"];
-const selectionLevelList = ["SD", "SMP", "SMA", "SNBT"];
+const selectionLevelList = ["SD", "SMP", "SMA", "UTBK/SNBT"];
 
 type StatesTypes = {
   jenjang: string;
   kelas: string;
   monthDuration: string;
 };
+
+export type TRefetch = <TPageData>(
+  options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
+) => Promise<QueryObserverResult<ProductPackage[] | undefined, unknown>>;
 
 export default function PriceList() {
   const { allData } = usePrice();
@@ -44,15 +57,35 @@ export default function PriceList() {
   const getQueryKelas = params.get("kelas");
   const getQueryMonth = params.get("month_duration");
 
-  const filteredData =
-    getQueryJenjang &&
-    datas[getQueryJenjang][
-      getQueryKelas ? `kelas_${getQueryKelas}` : getQueryJenjang
-    ]
-      ? datas[getQueryJenjang][
-          getQueryKelas ? `kelas_${getQueryKelas}` : getQueryJenjang
-        ].filter((data) => data.group_by_month === getQueryMonth ?? "1")
-      : [];
+  const { data, isError, isLoading, isRefetching, refetch } = useQuery({
+    queryKey: ["result-search-product"],
+    queryFn: async () => {
+      try {
+        const URL = process.env.NEXT_PUBLIC_API_URL;
+
+        const { jenjang, kelas, monthDuration } = currentSelection;
+
+        const createQuery =
+          jenjang === "sd"
+            ? `${URL}api/product/search?jenjang=${jenjang}&kelas=${kelas}&group=rb&long_period=${
+                monthDuration.split(" ")[0]
+              }`
+            : `${URL}api/product/search?jenjang=${jenjang}&group=rb&long_period=${
+                monthDuration.split(" ")[0]
+              }`;
+
+        const res = await fetch(createQuery);
+        const dataJson = (await res.json()) as ResponseShema<ProductPackage[]>;
+
+        console.log(dataJson.data);
+
+        return dataJson.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    staleTime: Infinity
+  });
 
   const handleCloseModal = () => {
     setIsModalKelasOpen(false);
@@ -94,6 +127,8 @@ export default function PriceList() {
     }
 
     monthDurationDisclosure.onClose();
+
+    refetch({ throwOnError: true });
   };
 
   const savePrefference = () => {
@@ -108,6 +143,8 @@ export default function PriceList() {
           scroll: false
         }
       );
+
+      refetch({ throwOnError: true });
     }
 
     kelasMenuProps.onClose();
@@ -124,33 +161,38 @@ export default function PriceList() {
   };
 
   useEffect(() => {
-    route.push(`/ruang_belajar?jenjang=sd&kelas=1&month_duration=1`);
+    route.push(`/ruang_belajar?jenjang=sd&kelas=1-2&month_duration=1`);
     handleOpenModal();
   }, []);
 
   // const disclosureProp = useDisclosure();
 
   return (
-    <Box py={{ base: 2 }}>
-      <ModalLevel {...modalProps} />
-      <Text
-        fontWeight='semibold'
-        textAlign='center'
-        as='h5'
-        fontSize='2xl'
-      >
-        Price List
-      </Text>
+    <Box
+      py={{ base: 2 }}
+      rounded={{ base: "xl" }}
+      boxShadow={{ base: "md" }}
+      mb={{ lg: "20" }}
+    >
+      <ModalLevel
+        {...modalProps}
+        refetchProduct={refetch}
+      />
+
       <Box
+        w={{ lg: "1150px" }}
         mt={{ base: "20px" }}
         p={{ base: "20px" }}
-        boxShadow='base'
         rounded='md'
       >
         <Stack
           direction='row'
           gap={4}
           mb={{ base: "20px" }}
+          p={{ lg: 4 }}
+          boxShadow='lg'
+          rounded={{ lg: "xl" }}
+          bg='white'
         >
           <CustomMenuBtn
             displaySelection={params.get("jenjang")?.toUpperCase() || ""}
@@ -189,26 +231,63 @@ export default function PriceList() {
             {...monthDurationDisclosure}
           />
         </Stack>
-        <Stack
-          spacing={3}
-          direction='column'
+        <Box
+          display={{ base: "flex" }}
+          flexDirection={{ base: "column", lg: "row" }}
+          gap={{ base: 18 }}
+          overflowX='scroll'
+          pb={{ lg: 8 }}
+          h={{ base: "650px" }}
         >
-          {filteredData.length !== 0 ? (
-            filteredData.map((data, index) => (
-              <CardPrice
-                hideBuyButton={false}
-                key={index}
-                data={data}
-              />
+          {data && data.length > 0 ? (
+            data.map((product) => (
+              <Box
+                key={product.id}
+                h='full'
+                w='fit-content'
+              >
+                <CardPrice
+                  hideBuyButton={false}
+                  data={product}
+                />
+              </Box>
             ))
+          ) : isLoading || isRefetching ? (
+            <LoadIndicator />
           ) : (
-            <Text fontSize='md'>Product tidak di temukan</Text>
+            <p>Data not found</p>
           )}
-        </Stack>
+        </Box>
       </Box>
     </Box>
   );
 }
+
+const LoadIndicator = () => {
+  return (
+    <Box
+      display='grid'
+      gap={5}
+      placeContent='center'
+      w='full'
+      h='full'
+    >
+      <Flex
+        direction='row'
+        gap={8}
+      >
+        <Spinner size='lg' />
+        <Text
+          fontSize='xl'
+          textAlign='center'
+          mt={2}
+        >
+          Please wait...
+        </Text>
+      </Flex>
+    </Box>
+  );
+};
 
 export { selectionLevelList, selectionProductList };
 

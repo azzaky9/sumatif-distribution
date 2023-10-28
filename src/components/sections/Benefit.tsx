@@ -1,16 +1,7 @@
 "use client";
 
-import {
-  Box,
-  Button,
-  Heading,
-  SimpleGrid,
-  Text,
-  Flex,
-  Image
-} from "@chakra-ui/react";
+import { Box, Button, Heading, Flex, Image } from "@chakra-ui/react";
 import BenefitTabs from "../tabs/BenefitTabs";
-import { FaRegSmileBeam } from "react-icons/fa";
 import BenefitsImage from "../../../public/images/benefit_section.webp";
 
 export default function Benefit() {
@@ -25,7 +16,10 @@ export default function Benefit() {
       alignItems='center'
       gap={{ base: "40px", lg: "80px" }}
     >
-      <Box position='relative'>
+      <Box
+        position='relative'
+        display={{ base: "none", lg: "block" }}
+      >
         <Box
           w={650}
           h={500}
@@ -34,8 +28,8 @@ export default function Benefit() {
           borderColor='orange.500'
           rounded='2xl'
           position='absolute'
-          left="-10"
-          top="12"
+          left='-10'
+          top='12'
         />
 
         <Image
@@ -53,7 +47,7 @@ export default function Benefit() {
           alignItems={{ base: "center" }}
         >
           <Heading
-            fontSize={{ base: "2xl", lg: "2xl" }}
+            fontSize={{ base: "lg", lg: "2xl" }}
             textAlign={{ base: "center", lg: "start" }}
             w={{ md: "85%", lg: "full" }}
           >
@@ -63,12 +57,14 @@ export default function Benefit() {
         </Box>
 
         <BenefitTabs />
-        <Button
-          variant={{ base: "outline", md: "solid" }}
-          size='md'
-        >
-          Berlanggan Sekarang
-        </Button>
+        <a href='#price'>
+          <Button
+            variant={{ base: "outline", md: "solid" }}
+            size='md'
+          >
+            Berlanggan Sekarang
+          </Button>
+        </a>
       </Box>
     </Flex>
   );

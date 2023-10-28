@@ -29,25 +29,25 @@ export default function ProductProvide() {
       backgroundColor='gray.50'
       px={{ base: 6, lg: "24" }}
       py={{ base: "16" }}
-      column={{ base: 1, lg: 2  }}
-      gap={{ base: "20px", lg: 12 }}
-      gridTemplateColumns={{ base: "repeat(2, 1fr)" }}
-      placeContent="center"
+      column={{ base: 1, lg: 2 }}
+      gap={{ base: 4, lg: 12 }}
+      gridTemplateColumns={{ base: "1fr", lg: 'repeat(2, 1fr)' }}
+      placeContent='center'
     >
-      <Box  >
-      <Text
-        w={{ lg: "75%" }}
-        fontSize={{ base: "2xl", lg: "3xl" }}
-        fontWeight='semibold'
-      >
-        Kami Menyediakan Product pilihan terbaik dari ruang Guru
-      </Text>
+      <Box>
+        <Text
+          w={{ lg: "75%" }}
+          fontSize={{ base: "2xl", lg: "3xl" }}
+          fontWeight='semibold'
+        >
+          Kami Menyediakan Product pilihan terbaik dari ruang Guru
+        </Text>
       </Box>
 
       <Box
         pt={{ base: 18 }}
         display={{ base: "flex" }}
-        gap={{ base: 12 }}
+        gap={{ base: 4, lg: 12 }}
         mb={{ base: 12 }}
         flexDirection={{ base: "column", md: "row" }}
       >

@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <Box
       as='main'
-    >
+    > 
       <Header />
       <ProductProvide />
       <Benefit />

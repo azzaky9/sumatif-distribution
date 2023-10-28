@@ -20,9 +20,10 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { MdCheckCircle } from "react-icons/md";
+import { ProductPackage } from "../sections/PriceHomepage";
 
 type Props = {
-  data: PackageSchema;
+  data: ProductPackage;
   hideBuyButton?: boolean;
 };
 
@@ -31,19 +32,22 @@ export default function CardPrice({ data, hideBuyButton }: Props) {
   const route = useRouter();
 
   const handleBuyProduct = () => {
-    setProductSelection(data);
+    // setProductSelection(data.);
 
     route.push("/payment");
   };
+
+  console.log(data);
 
   return (
     <Card
       rounded='2xl'
       shadow='md'
       variant='outline'
-      maxW='sm'
+      w="fit-content"
+      bg="white"
     >
-      <CardBody>
+      <CardBody w={{ lg: '385px' }} >
         <Stack
           mt='6'
           spacing='3'
@@ -118,7 +122,7 @@ export default function CardPrice({ data, hideBuyButton }: Props) {
 
 type TPropsDisplayDiscount = {
   priceDiscount: string;
-  percent: string;
+  percent: number;
 };
 
 function DisplayDiscount({ percent, priceDiscount }: TPropsDisplayDiscount) {

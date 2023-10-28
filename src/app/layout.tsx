@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 import { Box } from "@chakra-ui/react";
 import { PriceProvider } from "@/context/PriceContext";
 import Footer from "@/components/sections/Footer";
+import RQProviders from "@/provider-configs/reactquery/RQProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,18 +23,21 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <ChakraUiProvider>
-          <PriceProvider>
-            <Box
-              px={{ base: 4, md: 10, lg: 16 }}
-              pt={5}
-            >
-              <Navbar />
-            </Box>
-            {children}
-            <Footer />
-          </PriceProvider>
-        </ChakraUiProvider>
+        <RQProviders>
+          <ChakraUiProvider>
+            <PriceProvider>
+            
+              <Box
+                px={{ base: 4, md: 10, lg: 16 }}
+                pt={5}
+              >
+                <Navbar />
+              </Box>
+              {children}
+              <Footer />
+            </PriceProvider>
+          </ChakraUiProvider>
+        </RQProviders>
       </body>
     </html>
   );

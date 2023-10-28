@@ -19,6 +19,7 @@ import {
 import { useEffect, useState } from "react";
 import {
   StatesTypes,
+  TRefetch,
   TSetStates,
   selectionLevelList
 } from "../sections/PriceList";
@@ -29,28 +30,46 @@ type Props = {
   handleOpen: () => void;
   handleClose: () => void;
   setter: TSetStates<StatesTypes>;
+  refetchProduct: TRefetch;
 };
 
 export default function ModalLevel(props: Props) {
-  const { handleOpen, isOpen, handleClose, setter } = props;
+  const { handleOpen, isOpen, handleClose, setter, refetchProduct } = props;
 
-  const path = usePathname();
   const route = useRouter();
 
   const [currentKelas, setCurrentKelas] = useState(1);
+
+  const getKelas = (kelas: number) => {
+    if (kelas === 3 || kelas === 4) {
+      return "3-4";
+    }
+
+    if (kelas === 5 || kelas === 6) {
+      return "5-6";
+    }
+
+    return "1-2";
+  };
 
   const updateQueryParams = () => {
     if (typeof window !== "undefined") {
       const currentPath = window.location.href.split("/")[3];
 
-      setter((prev) => ({ ...prev, kelas: String(currentKelas) }));
+      setter((prev) => ({ ...prev, kelas: String(getKelas(currentKelas)) }));
 
       route.push(
-        `/ruang_belajar?jenjang=sd&kelas=${currentKelas}&month_duration=1`,
+        `/ruang_belajar?jenjang=sd&kelas=${getKelas(
+          currentKelas
+        )}&month_duration=1`,
         { scroll: false }
       );
 
       handleClose();
+
+      setTimeout(() => {
+        refetchProduct({ throwOnError: true });
+      }, 500);
     }
   };
 

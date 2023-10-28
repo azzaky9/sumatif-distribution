@@ -90,14 +90,17 @@ export default function CardDisplayerCustomer(props: Props) {
   return (
     <Box
       w={{ base: "full", md: "320px", lg: "420px" }}
-      boxShadow='2xl'
+      boxShadow='md'
       rounded='3xl'
       p={{ base: "23px" }}
+      bg="white"
     >
       <Box
         px={2}
-        h={{ base: "120px" }}
-        overflow='scroll'
+        h={{ base: "120px", lg: "80%" }}
+        overflowY={{ base: "scroll", lg: "hidden" }}
+        overflowX='hidden'
+        
       >
         <Flex
           flexWrap='wrap'
@@ -140,7 +143,7 @@ export default function CardDisplayerCustomer(props: Props) {
           loadingText='Sending..'
           rightIcon={<VscSend />}
         >
-          Send
+          Process
         </Button>
       </Box>
     </Box>

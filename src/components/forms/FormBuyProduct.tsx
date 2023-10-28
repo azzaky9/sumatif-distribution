@@ -111,10 +111,11 @@ export default function FormBuyProduct() {
   return (
     <>
       <Box
-        w={{ base: "full", md: "320px", lg: "420px" }}
-        boxShadow='2xl'
+        w={{ base: "full", md: "320px", lg: "60%" }}
+        boxShadow='md'
         rounded='3xl'
         p={{ base: "23px" }}
+        bg='white'
       >
         <Heading
           py={{ base: 4 }}
@@ -123,9 +124,11 @@ export default function FormBuyProduct() {
         >
           Form Pendaftaran
         </Heading>
-        <SimpleGrid
+        <Box
           as='form'
-          column={{ base: 1 }}
+          display='grid'
+          gridTemplateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
+          gap={{ lg: "20px" }}
           onSubmit={handleSubmit(onsubmit)}
         >
           <FormControl isInvalid={getError("name")}>
@@ -266,9 +269,11 @@ export default function FormBuyProduct() {
             />
             {createErrorMessage("namePICPendaftaran")}
           </FormControl>
+        </Box>
           <Box
             display='flex'
             justifyContent='end'
+            w='full'
             alignItems='end'
             gap={4}
           >
@@ -289,7 +294,6 @@ export default function FormBuyProduct() {
               Submit
             </Button>
           </Box>
-        </SimpleGrid>
       </Box>
       <CardDisplayerCustomer
         setCustomerList={setListCustomer}
