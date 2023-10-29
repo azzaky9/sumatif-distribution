@@ -30,6 +30,8 @@ import { ChangeEvent, useState } from "react";
 import { VscSend } from "react-icons/vsc";
 import PopoverBenefitProduct from "../popovers/Popover";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+import { useMutation } from "react-query";
+import axios, { AxiosError } from "axios";
 
 type Props = {
   customerList: StateListCustomer[];
@@ -70,7 +72,7 @@ export default function CardDisplayerCustomer(props: Props) {
       }
 
       const res: { status: "success" | "failed"; message: string } =
-        await senderEmail();
+        await sendMail.mutateAsync();
 
       if (res.status === "success") {
         toast({
@@ -99,18 +101,27 @@ export default function CardDisplayerCustomer(props: Props) {
     }
   };
 
-  const senderEmail = async () => {
-    const res = await fetch("/api/email", {
-      method: "POST",
-      body: JSON.stringify({
-        studentData: customerList,
-        picNames: PICNames
-      })
-    });
-    const data = await res.json();
+  const sendMail = useMutation({
+    mutationKey: ["send-email"],
+    mutationFn: async () => {
+      try {
+        const url = process.env.NEXT_PUBLIC_API_URL;
 
-    return data;
-  };
+        const res = await axios.post(`${url}api/email`, {
+          studentData: customerList,
+          picNames: PICNames
+        });
+
+        const data = await res.data;
+
+        return data;
+      } catch (error) {
+        if (error instanceof AxiosError) {
+          console.error(error.message);
+        }
+      }
+    }
+  });
 
   return (
     <Card
