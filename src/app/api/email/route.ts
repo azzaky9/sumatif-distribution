@@ -42,7 +42,7 @@ export async function POST(req: Request) {
 
     await transporter.sendMail({
       from: "sumatif.com",
-      to: "zakiiws22@gmail.com",
+      to: process.env.SEND_GMAIL,
       subject: body.studentData[0].packageName,
       text: `
       ${createList(body.studentData[0])}
