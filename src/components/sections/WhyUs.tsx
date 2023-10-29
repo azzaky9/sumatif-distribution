@@ -1,6 +1,13 @@
 "use client";
 
-import { Box, SimpleGrid, Text, useMediaQuery } from "@chakra-ui/react";
+import {
+  Box,
+  SimpleGrid,
+  Text,
+  useMediaQuery,
+  Heading,
+  Highlight
+} from "@chakra-ui/react";
 import CardPoint from "../card/CardPoint";
 import { GiReceiveMoney } from "react-icons/gi";
 import whyUsContent from "../../../public/cms_content/why_us.json";
@@ -53,47 +60,67 @@ export default function WhyUs() {
       px={{ base: 4, md: 10, lg: 16 }}
       py={{ base: 20 }}
       id='why-us'
-      bg='gray.50'
     >
       <Box
         w='full'
-        justifyContent={{ base: "center" }}
-        alignItems={{ base: "center" }}
+        display='grid'
+        gridTemplateColumns={{ base: "100%", lg: "40% 60%" }}
         pb={{ base: 8 }}
         py={{ base: 10 }}
+        placeContent='center'
       >
-        <Text
-          fontSize={{ base: "xl", md: "xl", lg: "3xl" }}
-          textAlign='center'
-          fontWeight='bold'
+        <Box
+          display='grid'
+          placeContent='center'
+          w={{ lg: "80%" }}
+          ms={{ lg: "60px" }}
         >
-          Alasan Mengapa Harus Berlangganan Di Sumatif
-        </Text>
+          <Heading fontSize={{ base: "xl", md: "xl", lg: "3xl" }}>
+            <Highlight
+              query='Mengapa?'
+              styles={{
+                bg: "orange.50",
+                px: 2,
+                py: 1,
+                rounded: "xl",
+                color: "orange.500"
+              }}
+            >
+              Alasan Mengapa? Harus Berlangganan Di Sumatif
+            </Highlight>
+          </Heading>
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+            quam quisquam quibusdam consequuntur quia aliquid quasi laborum!
+            Molestias, dolorem ullam.
+          </Text>
+        </Box>
+
+        <SimpleGrid
+          pt={4}
+          px={5}
+          columns={{ base: 1, lg: 2 }}
+          spacing={{ base: 10 }}
+        >
+          {!isGreaterThan425px
+            ? bindIcons.slice(0, 3).map((benefitIcon, index) => (
+                <CardPoint
+                  key={index}
+                  icons={benefitIcon.icon}
+                  title={benefitIcon.title}
+                  description={benefitIcon.description}
+                />
+              ))
+            : bindIcons.map((benefitIcon, index) => (
+                <CardPoint
+                  key={index}
+                  icons={benefitIcon.icon}
+                  title={benefitIcon.title}
+                  description={benefitIcon.description}
+                />
+              ))}
+        </SimpleGrid>
       </Box>
-      <SimpleGrid
-        pt={4}
-        px={5}
-        columns={{ base: 1, md: 3 }}
-        spacing={{ base: 10 }}
-      >
-        {!isGreaterThan425px
-          ? bindIcons.slice(0, 3).map((benefitIcon, index) => (
-              <CardPoint
-                key={index}
-                icons={benefitIcon.icon}
-                title={benefitIcon.title}
-                description={benefitIcon.description}
-              />
-            ))
-          : bindIcons.map((benefitIcon, index) => (
-              <CardPoint
-                key={index}
-                icons={benefitIcon.icon}
-                title={benefitIcon.title}
-                description={benefitIcon.description}
-              />
-            ))}
-      </SimpleGrid>
     </Box>
   );
 }

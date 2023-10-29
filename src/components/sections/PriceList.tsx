@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import ModalLevel from "../modal/ModalLevel";
 import CardPrice from "../card/CardPrice";
-import { usePrice, PricePackage } from "@/context/PriceContext";
+import { usePrice } from "@/context/PriceContext";
 import CustomMenuBtn from "../button-menu/CustomMenuBtn";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
@@ -21,7 +21,7 @@ import {
   RefetchQueryFilters,
   QueryObserverResult
 } from "react-query";
-import { ResponseShema, ProductPackage } from "./PriceHomepage";
+import { ResponseShema, ProductPackage } from "@/context/PriceContext";
 
 type TSetStates<T> = Dispatch<SetStateAction<T>>;
 type CurrentSelection = "Ruang Belajar" | "Brain Academy";
@@ -40,8 +40,6 @@ export type TRefetch = <TPageData>(
 ) => Promise<QueryObserverResult<ProductPackage[] | undefined, unknown>>;
 
 export default function PriceList() {
-  const { allData } = usePrice();
-
   const route = useRouter();
   const params = useSearchParams();
 
@@ -51,11 +49,6 @@ export default function PriceList() {
     monthDuration: "1 Bulan"
   });
   const [isModalKelasOpen, setIsModalKelasOpen] = useState(false);
-
-  const datas = allData as PricePackage;
-  const getQueryJenjang = params.get("jenjang");
-  const getQueryKelas = params.get("kelas");
-  const getQueryMonth = params.get("month_duration");
 
   const { data, isError, isLoading, isRefetching, refetch } = useQuery({
     queryKey: ["result-search-product"],
@@ -171,7 +164,6 @@ export default function PriceList() {
     <Box
       py={{ base: 2 }}
       rounded={{ base: "xl" }}
-      boxShadow={{ base: "md" }}
       mb={{ lg: "20" }}
     >
       <ModalLevel
@@ -189,7 +181,7 @@ export default function PriceList() {
           direction='row'
           gap={4}
           mb={{ base: "20px" }}
-          p={{ lg: 4 }}
+          p={{ base: 4, lg: 4 }}
           boxShadow='lg'
           rounded={{ lg: "xl" }}
           bg='white'
@@ -235,7 +227,7 @@ export default function PriceList() {
           display={{ base: "flex" }}
           flexDirection={{ base: "column", lg: "row" }}
           gap={{ base: 18 }}
-          overflowX='scroll'
+          overflowX={{ base: "hidden", lg: "scroll" }}
           pb={{ lg: 8 }}
           h={{ base: "650px" }}
         >
@@ -263,7 +255,7 @@ export default function PriceList() {
   );
 }
 
-const LoadIndicator = () => {
+export const LoadIndicator = () => {
   return (
     <Box
       display='grid'

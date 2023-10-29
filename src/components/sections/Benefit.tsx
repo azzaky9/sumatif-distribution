@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Heading, Flex, Image } from "@chakra-ui/react";
+import { Box, Button, Heading, Flex, Image, Highlight } from "@chakra-ui/react";
 import BenefitTabs from "../tabs/BenefitTabs";
 import BenefitsImage from "../../../public/images/benefit_section.webp";
 
@@ -39,7 +39,7 @@ export default function Benefit() {
           height={500}
         />
       </Box>
-      <Box w={{ lg: "42%" }}>
+      <Box w={{ lg: "35%" }}>
         <Box
           display='flex'
           flexDirection={{ base: "column" }}
@@ -47,12 +47,22 @@ export default function Benefit() {
           alignItems={{ base: "center" }}
         >
           <Heading
-            fontSize={{ base: "lg", lg: "2xl" }}
-            textAlign={{ base: "center", lg: "start" }}
+            fontSize={{ base: "2xl", lg: "2xl" }}
+            textAlign={{ base: "start", lg: "start" }}
             w={{ md: "85%", lg: "full" }}
           >
-            Setiap product memiliki keunggulan dan benefit tersendiri yang dapat
-            di sesuaikan dengan keinginan Siswa / Mahasiswa
+            <Highlight
+              query='Interaktif'
+              styles={{
+                bg: "orange.50",
+                px: 2,
+                py: 1,
+                rounded: "xl",
+                color: "orange.500"
+              }}
+            >
+              Pembelajaran Online yang Menarik, Terjangkau, serta Interaktif
+            </Highlight>
           </Heading>
         </Box>
 

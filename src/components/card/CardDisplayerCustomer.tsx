@@ -11,13 +11,25 @@ import {
   Flex,
   ButtonGroup,
   IconButton,
-  useToast
+  useToast,
+  Card,
+  CardBody,
+  PopoverArrow,
+  PopoverHeader,
+  PopoverCloseButton,
+  PopoverBody,
+  PopoverFooter,
+  FormControl,
+  Input,
+  FormLabel
 } from "@chakra-ui/react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { TSetStates } from "../sections/PriceList";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { VscSend } from "react-icons/vsc";
+import PopoverBenefitProduct from "../popovers/Popover";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 type Props = {
   customerList: StateListCustomer[];
@@ -28,6 +40,8 @@ export default function CardDisplayerCustomer(props: Props) {
   const { customerList, setCustomerList } = props;
 
   const [isSender, setIsSender] = useState(false);
+  const [PICNames, setPICNames] = useState("");
+  const [isPICError, setIsPICError] = useState(false);
 
   const toast = useToast();
 
@@ -49,12 +63,19 @@ export default function CardDisplayerCustomer(props: Props) {
         throw new Error("Minimal harus 10 nama");
       }
 
+      if (!PICNames) {
+        setIsPICError(true);
+
+        throw new Error("Nama PIC pendaftaran wajib di isi");
+      }
+
       const res: { status: number; message: string } = await senderEmail();
 
       if (res.status === 200) {
         toast({
           position: "top",
-          title: "Berhasil melakukan transaksi",
+          title: "Data kamu berhasil di kirim,",
+          description: "harap menunggu update dari admin kami ya! 😉",
           status: "success",
           isClosable: true
         });
@@ -80,7 +101,10 @@ export default function CardDisplayerCustomer(props: Props) {
   const senderEmail = async () => {
     const res = await fetch("/api/email", {
       method: "POST",
-      body: JSON.stringify(customerList)
+      body: JSON.stringify({
+        studentData: customerList,
+        picNames: PICNames
+      })
     });
     const data = await res.json();
 
@@ -88,64 +112,120 @@ export default function CardDisplayerCustomer(props: Props) {
   };
 
   return (
-    <Box
+    <Card
       w={{ base: "full", md: "320px", lg: "420px" }}
-      boxShadow='md'
       rounded='3xl'
       p={{ base: "23px" }}
-      bg="white"
+      bg='white'
+      variant='outline'
     >
-      <Box
-        px={2}
-        h={{ base: "120px", lg: "80%" }}
-        overflowY={{ base: "scroll", lg: "hidden" }}
-        overflowX='hidden'
-        
+      <CardBody
+        display='flex'
+        flexDir='column'
+        justifyContent='space-between'
       >
-        <Flex
-          flexWrap='wrap'
-          gap={3}
+        <Box
+          px={2}
+          overflowY={{ base: "scroll", lg: "hidden" }}
+          overflowX='hidden'
+          h={{ base: "250px", lg: "unset" }}
         >
-          {customerList.map((customer, index) => (
-            <ButtonGroup
-              key={index}
-              size='sm'
-              isAttached
-              variant='outline'
+          <Flex
+            w='full'
+            flexWrap='wrap'
+            gap={3}
+          >
+            {customerList.map((customer, index) => (
+              <ButtonGroup
+                key={index}
+                size='sm'
+                isAttached
+                variant='outline'
+              >
+                <Button leftIcon={<BsFillPersonFill />}>{customer.name}</Button>
+                <IconButton
+                  onClick={() => handleDelete(customer.id)}
+                  aria-label='Add to friends'
+                  icon={<AiOutlineClose />}
+                />
+              </ButtonGroup>
+            ))}
+          </Flex>
+        </Box>
+
+        <Box
+          w='full'
+          display='flex'
+          flexDir='column'
+          justifyContent='space-between'
+        >
+          <FormControl
+            isInvalid={isPICError}
+            mt={4}
+          >
+            <FormLabel fontSize='xs'>
+              Nama PIC Pendaftaran (Nama yang bisa di hubungi)
+            </FormLabel>
+            <Input
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setIsPICError(false);
+                setPICNames(e.target.value);
+              }}
+              value={PICNames}
+              type='text'
+              placeholder='Nama PIC '
+            />
+          </FormControl>
+          <Box
+            mt={4}
+            w='full'
+            display='flex'
+            justifyContent='space-between'
+          >
+            <PopoverBenefitProduct
+              triggerElement={
+                <IconButton
+                  variant='ghost'
+                  colorScheme='facebook'
+                  aria-label='information'
+                  rounded='full'
+                  size='sm'
+                  icon={
+                    <AiOutlineInfoCircle
+                      style={{ color: "black", fontSize: "1.4rem" }}
+                    />
+                  }
+                />
+              }
             >
-              <Button leftIcon={<BsFillPersonFill />}>{customer.name}</Button>
-              <IconButton
-                onClick={() => handleDelete(customer.id)}
-                aria-label='Add to friends'
-                icon={<AiOutlineClose />}
-              />
-            </ButtonGroup>
-          ))}
-        </Flex>
-      </Box>
-      <Box
-        p={3}
-        display='flex'
-        flexDirection='column'
-      >
-        <Text fontSize='sm'>Kapasitas minimum untuk melakukan transaksi </Text>
-        <span>{customerList.length} / 10</span>
-      </Box>
-      <Box
-        display='flex'
-        justifyContent='end'
-        alignItems='end'
-      >
-        <Button
-          colorScheme='orange'
-          onClick={handleSubmit}
-          isLoading={isSender}
-          loadingText='Sending..'
-          rightIcon={<VscSend />}
-        >
-          Process
-        </Button>
-      </Box>
-    </Box>
+              <PopoverArrow />
+              <PopoverHeader textAlign='start'>
+                Informasi Transaksi
+              </PopoverHeader>
+              <PopoverCloseButton />
+              <PopoverBody>
+                <Text>
+                  Untuk melakukan proses transaksi kamu harus mengisi 10 data
+                  temanmu jika ingin membeli paket di Sumatif
+                </Text>
+              </PopoverBody>
+              <PopoverFooter>
+                <Text>Status: {customerList.length} / 10</Text>
+              </PopoverFooter>
+            </PopoverBenefitProduct>
+            <Button
+              colorScheme='green'
+              variant='ghost'
+              onClick={handleSubmit}
+              isLoading={isSender}
+              loadingText='Sending..'
+              rightIcon={<VscSend />}
+            >
+              Process
+            </Button>
+          </Box>
+        </Box>
+      </CardBody>
+    </Card>
   );
 }

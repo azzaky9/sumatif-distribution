@@ -1,6 +1,13 @@
-"use client"
+"use client";
 
-import { Button, Stack, Text, Box, useMediaQuery } from "@chakra-ui/react";
+import {
+  Button,
+  Stack,
+  Text,
+  Box,
+  useMediaQuery,
+  Highlight
+} from "@chakra-ui/react";
 import { HiArrowRight as ArrowRightIcon } from "react-icons/hi2";
 import illustration from "../../../public/images/content.jpg";
 import { Image } from "@chakra-ui/react";
@@ -34,15 +41,25 @@ export default function Header() {
             lineHeight={1.3}
             fontSize={{ base: "2.7rem", md: "6xl", lg: "7xl" }}
             fontWeight='bold'
-            
           >
-            Official Partner Bimbel Online & Offline Ruang Guru
+            <Highlight
+              query='Partner'
+              styles={{
+                bg: "orange.50",
+                px: 2,
+                py: 1,
+                rounded: "xl",
+                color: "orange.500"
+              }}
+            >
+              Official Partner Bimbel Online & Offline Ruang Guru
+            </Highlight>
           </Text>
 
           <Text
             borderLeft='4px'
             borderColor='orange'
-            color="gray.500"
+            color='gray.500'
             fontSize={{ base: "medium", md: "medium" }}
             paddingLeft={3}
           >

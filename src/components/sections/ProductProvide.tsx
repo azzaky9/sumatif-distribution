@@ -15,11 +15,6 @@ export const productListCDNLink = [
     link: brainacademyLogo.src,
     alt: "brain-academy-logo",
     as: "image"
-  },
-  {
-    alt: "onsite_learning",
-    link: FaChalkboardTeacher,
-    as: "icon"
   }
 ];
 
@@ -31,7 +26,7 @@ export default function ProductProvide() {
       py={{ base: "16" }}
       column={{ base: 1, lg: 2 }}
       gap={{ base: 4, lg: 12 }}
-      gridTemplateColumns={{ base: "1fr", lg: 'repeat(2, 1fr)' }}
+      gridTemplateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
       placeContent='center'
     >
       <Box>

@@ -3,19 +3,18 @@ import ProductProvide from "@/components/sections/ProductProvide";
 import Header from "@/components/sections/Header";
 import Benefit from "@/components/sections/Benefit";
 import WhyUs from "@/components/sections/WhyUs";
-import PriceHomepage from "@/components/sections/PriceHomepage";
-import Footer from "@/components/sections/Footer";
+import RecommendedCourse from "@/components/sections/RecommendedCourse";
+import OnsiteLearning from "@/components/sections/OnsiteLearning";
 
 export default function Home() {
   return (
-    <Box
-      as='main'
-    > 
+    <Box as='main'>
       <Header />
       <ProductProvide />
+      <RecommendedCourse />
       <Benefit />
+      <OnsiteLearning />
       <WhyUs />
-      <PriceHomepage />
     </Box>
   );
 }

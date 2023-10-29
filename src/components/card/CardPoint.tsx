@@ -24,7 +24,8 @@ export default function CardPoint(props: Props) {
     <Card
       px={{ lg: 6 }}
       py={{ lg: 4 }}
-      variant={{ base: "elevated", lg: "outline" }}
+      variant={{ base: 'elevated' }}
+      
     >
       <CardBody>
         <Box
@@ -34,7 +35,7 @@ export default function CardPoint(props: Props) {
           px='3.5'
           bgColor={{ base: "orange.50" }}
           rounded='md'
-          color='orange.600'
+          color='orange.500'
         >
           {icons}
         </Box>

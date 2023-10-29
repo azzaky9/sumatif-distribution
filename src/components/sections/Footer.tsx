@@ -1,63 +1,231 @@
 "use client";
 
-import { Box, Flex, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
-import { SiGmail } from "react-icons/si";
+import React, { ReactElement, JSXElementConstructor } from "react";
+import {
+  Box,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Stack,
+  Text,
+  OrderedList,
+  ListItem,
+  List,
+  ListIcon,
+  IconButton
+} from "@chakra-ui/react";
+import { BiLogoGmail } from "react-icons/bi";
+import { BsFillTelephoneFill } from "react-icons/bs";
 import { TiLocation } from "react-icons/ti";
+import { Link } from "@chakra-ui/react";
+import { GrLocationPin } from "react-icons/gr";
+import { RiCustomerService2Fill } from "react-icons/ri";
+import { FaLocationDot } from "react-icons/fa6";
 
-const renderingLoopMapping = [
+const pagesFooter: List[] = [
   {
-    icons: <SiGmail style={{ fontSize: "1.4rem", color: "white" }} />,
-    text: "ptsumatif@gmail.com"
+    text: "Home",
+    linkTo: "#home"
   },
-
   {
-    icons: <TiLocation style={{ fontSize: "1.4rem", color: "white" }} />,
-    text: "Jalan Suka Eka Medan Johor Nomor 11 Medan Sumatera Utara"
+    text: "Benefit",
+    linkTo: "#benefits"
+  },
+  {
+    text: "Why Us",
+    linkTo: "#why-us"
+  },
+  {
+    text: "Products",
+    linkTo: "#products"
+  }
+];
+
+const productList: List[] = [
+  {
+    text: "Ruang Belajar",
+    linkTo: "/ruang_belajar"
+  },
+  {
+    text: "Brain Academy",
+    linkTo: "/brain_academy"
+  },
+  {
+    text: "Onsite Learning",
+    linkTo: "/onsite_learning"
   }
 ];
 
 export default function Footer() {
   return (
     <Box
-      bg={{ base: "gray.700" }}
-      px={{ base: 8 }}
-      py={{ base: 16 }}
+      bg={{ base: "gray.800" }}
+      px={{ base: 8, lg: "32" }}
+      pb={{ base: 16 }}
+      pt={{ base: 24 }}
       mt={{ base: 2 }}
-      display={{ base: "grid" }}
-      placeContent={{ base: "center" }}
     >
-      <Heading
-        fontSize='2xl'
-        mb={{ base: 4 }}
-        color='gray.400'
-        textAlign={{ base: "center" }}
+      <Box
+        w='full'
+        display='flex'
+        flexDir={{ base: "column", lg: "row" }}
+        gap={{ base: 8, lg: 20 }}
       >
-        Sumatif
+        <Box
+          display='flex'
+          flexDir='column'
+          gap={8}
+        >
+          <Heading
+            color='white'
+            fontSize='3xl'
+          >
+            Sumatif
+          </Heading>
+          <Box>
+            <Box
+              display='flex'
+              alignItems='center'
+              gap={2}
+            >
+              <FaLocationDot style={{ color: "white" }} />
+              <Heading
+                fontSize='md'
+                color='whiteAlpha.700'
+              >
+                KANTOR UTAMA
+              </Heading>
+            </Box>
+            <Text
+              w='320px'
+              color='whiteAlpha.700'
+            >
+              Jalan Suka Eka Medan Johor Nomor 11 Medan Sumatera Utara
+            </Text>
+          </Box>
+        </Box>
+        <FooterList
+          heading='Product'
+          list={productList}
+        />
+        <FooterList
+          heading='Sections'
+          list={pagesFooter}
+        />
+        <Box
+          justifySelf='end'
+          ms={{ lg: 10 }}
+        >
+          <Heading
+            fontSize='2xl'
+            color='white'
+            mb={4}
+          >
+            HUBUNGI KAMI
+          </Heading>
+          <Stack
+            direction='column'
+            spacing={4}
+          >
+            <ButtonWithText
+              icons={
+                <BiLogoGmail style={{ color: "white", fontSize: "1.1rem" }} />
+              }
+              displayText='ptsumatif@gmail.com'
+            />
+            <ButtonWithText
+              icons={
+                <BsFillTelephoneFill
+                  style={{ color: "white", fontSize: "0.8rem" }}
+                />
+              }
+              displayText='(+62) 82367565888'
+            />
+            <ButtonWithText
+              icons={
+                <BsFillTelephoneFill
+                  style={{ color: "white", fontSize: "0.8rem" }}
+                />
+              }
+              displayText='(+62) 81269259444'
+            />
+            <ButtonWithText
+              icons={
+                <BsFillTelephoneFill
+                  style={{ color: "white", fontSize: "0.8rem" }}
+                />
+              }
+              displayText='(+62) 8119307002'
+            />
+          </Stack>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
+type TPropBtnWithText = {
+  icons?: ReactElement<any, string | JSXElementConstructor<any>>;
+  displayText: string;
+};
+
+const ButtonWithText: React.FC<TPropBtnWithText> = (props) => {
+  const { icons, displayText } = props;
+
+  return (
+    <Flex gap={4}>
+      <IconButton
+        size='sm'
+        icon={icons}
+        aria-label='email-icons'
+        colorScheme='facebook'
+        rounded='full'
+      />
+      <Text color='whiteAlpha.700'>{displayText}</Text>
+    </Flex>
+  );
+};
+
+type List = {
+  text: string;
+  linkTo: string | null;
+  icons?: any;
+};
+
+type Props = {
+  heading: string;
+  list: List[];
+};
+
+const FooterList = ({ heading, list }: Props) => {
+  return (
+    <Box>
+      <Heading
+        fontSize={{ base: "2xl" }}
+        mb={4}
+        color='white'
+      >
+        {heading}
       </Heading>
       <Flex
         width='full'
         maxWidth={{ base: "320px" }}
         direction='column'
-        justifyContent={{ base: "center" }}
-        alignItems={{ base: "center" }}
-        gap={{ base: 2 }}
+        gap={{ base: 2, lg: 6 }}
       >
-        {renderingLoopMapping.map((item, index) => (
-          <Box
-            display="flex"
-
-            key={index}
-          >
-            <Text
+        <List listStyleType='none'>
+          {list.map((item, index) => (
+            <Link
+              href={item.linkTo ?? undefined}
+              key={index}
               color={{ base: "gray.500" }}
-              fontSize='sm'
-              textAlign="center"
+              fontSize={{ base: "sm", lg: "md" }}
             >
-              {item.text}
-            </Text>
-          </Box>
-        ))}
+              <ListItem>{item.text}</ListItem>
+            </Link>
+          ))}
+        </List>
       </Flex>
     </Box>
   );
-}
+};

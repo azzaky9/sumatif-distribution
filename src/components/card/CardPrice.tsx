@@ -1,10 +1,9 @@
 "use client";
 
-import { PricePackage, usePrice, PackageSchema } from "@/context/PriceContext";
+import { usePrice } from "@/context/PriceContext";
 import {
   Card,
   CardBody,
-  Image,
   Stack,
   Heading,
   Text,
@@ -15,15 +14,14 @@ import {
   Box,
   List,
   ListItem,
-  ListIcon,
-  useFocusOnPointerDown
+  ListIcon
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { MdCheckCircle } from "react-icons/md";
-import { ProductPackage } from "../sections/PriceHomepage";
+import { ProductPackage } from "@/context/PriceContext";
 
 type Props = {
-  data: ProductPackage;
+  data: ProductPackage | null;
   hideBuyButton?: boolean;
 };
 
@@ -32,91 +30,93 @@ export default function CardPrice({ data, hideBuyButton }: Props) {
   const route = useRouter();
 
   const handleBuyProduct = () => {
-    // setProductSelection(data.);
+    setProductSelection(data);
 
     route.push("/payment");
   };
 
-  console.log(data);
-
   return (
-    <Card
-      rounded='2xl'
-      shadow='md'
-      variant='outline'
-      w="fit-content"
-      bg="white"
-    >
-      <CardBody w={{ lg: '385px' }} >
-        <Stack
-          mt='6'
-          spacing='3'
+    <>
+      {data && (
+        <Card
+          rounded='2xl'
+          shadow='md'
+          variant='outline'
+          w='fit-content'
+          bg='white'
         >
-          <Heading size='md'>{data.title}</Heading>
-          <Text fontSize={{ base: "sm" }}>{data.description}</Text>
-        </Stack>
-        <Stack
-          direction='column'
-          gap={4}
-          mt='3'
-          h={240}
-          overflow={{ base: "scroll" }}
-          overflowX={{ base: "hidden" }}
-        >
-          {data.fitur.map((ft, index) => (
-            <Box key={index}>
-              <Heading
-                fontSize='md'
-                mb={{ base: 4 }}
-              >
-                {ft.heading}
-              </Heading>
-              <List spacing={3}>
-                {ft.list_fitur.map((lf, index) => (
-                  <ListItem
-                    key={index}
-                    fontSize={{ base: "sm" }}
-                  >
-                    <ListIcon
-                      as={MdCheckCircle}
-                      color='green.500'
-                    />
-                    {lf}
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          ))}
-        </Stack>
-        <Box mt={{ base: 5 }}>
-          <DisplayDiscount
-            percent={data.discount}
-            priceDiscount={data.price.before_discount}
-          />
-          <Text
-            fontWeight='bold'
-            color='blue.600'
-            fontSize='2xl'
-          >
-            {data.price.after_discount}
-          </Text>
-        </Box>
-      </CardBody>
-      <Divider color={{ base: "gray.300" }} />
-      <CardFooter>
-        {typeof hideBuyButton !== "undefined" && !hideBuyButton ? (
-          <ButtonGroup spacing='2'>
-            <Button
-              variant='solid'
-              colorScheme='orange'
-              onClick={handleBuyProduct}
+          <CardBody w={{ lg: "385px" }}>
+            <Stack
+              mt='6'
+              spacing='3'
             >
-              Buy now
-            </Button>
-          </ButtonGroup>
-        ) : null}
-      </CardFooter>
-    </Card>
+              <Heading size='md'>{data.title}</Heading>
+              <Text fontSize={{ base: "sm" }}>{data.description}</Text>
+            </Stack>
+            <Stack
+              direction='column'
+              gap={4}
+              mt='3'
+              h={240}
+              overflow={{ base: "scroll" }}
+              overflowX={{ base: "hidden" }}
+            >
+              {data.fitur.map((ft, index) => (
+                <Box key={index}>
+                  <Heading
+                    fontSize='md'
+                    mb={{ base: 4 }}
+                  >
+                    {ft.heading}
+                  </Heading>
+                  <List spacing={3}>
+                    {ft.list_fitur.map((lf, index) => (
+                      <ListItem
+                        key={index}
+                        fontSize={{ base: "sm" }}
+                      >
+                        <ListIcon
+                          as={MdCheckCircle}
+                          color='green.500'
+                        />
+                        {lf}
+                      </ListItem>
+                    ))}
+                  </List>
+                </Box>
+              ))}
+            </Stack>
+            <Box mt={{ base: 5 }}>
+              <DisplayDiscount
+                percent={data.discount}
+                priceDiscount={data.price.before_discount}
+              />
+              <Text
+                fontWeight='bold'
+                color='blue.600'
+                fontSize='2xl'
+              >
+                {data.price.after_discount}
+              </Text>
+            </Box>
+          </CardBody>
+          <Divider color={{ base: "gray.300" }} />
+          <CardFooter>
+            {typeof hideBuyButton !== "undefined" && !hideBuyButton ? (
+              <ButtonGroup spacing='2'>
+                <Button
+                  variant='solid'
+                  colorScheme='orange'
+                  onClick={handleBuyProduct}
+                >
+                  Buy now
+                </Button>
+              </ButtonGroup>
+            ) : null}
+          </CardFooter>
+        </Card>
+      )}
+    </>
   );
 }
 
@@ -125,7 +125,10 @@ type TPropsDisplayDiscount = {
   percent: number;
 };
 
-function DisplayDiscount({ percent, priceDiscount }: TPropsDisplayDiscount) {
+export function DisplayDiscount({
+  percent,
+  priceDiscount
+}: TPropsDisplayDiscount) {
   return (
     <Stack
       direction='row'
@@ -134,7 +137,7 @@ function DisplayDiscount({ percent, priceDiscount }: TPropsDisplayDiscount) {
       <Text
         fontWeight='bold'
         color='gray.400'
-        fontSize={{ base: "lg" }}
+        fontSize={{ base: "sm" }}
         textDecoration='line-through'
       >
         {priceDiscount}
@@ -144,7 +147,7 @@ function DisplayDiscount({ percent, priceDiscount }: TPropsDisplayDiscount) {
         colorScheme='red'
         size='xs'
       >
-        -{percent}
+        -{percent}%
       </Button>
     </Stack>
   );

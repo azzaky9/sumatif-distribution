@@ -107,17 +107,6 @@ export default function ModalLevel(props: Props) {
                 Kelas {kelas}
               </Button>
             ))}
-            {/* [1, 2, 3, 4, 5, 6].map((item) => (
-                <Button
-                  key={item}
-                  variant='ghost'
-                  colorScheme='orange'
-                  onClick={() =>
-                    console.log("any")
-                  }
-                >
-                  Kelas {item}
-                </Button> */}
           </Box>
         </ModalBody>
         <ModalFooter>

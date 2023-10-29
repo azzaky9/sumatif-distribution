@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { FormSchema } from "@/components/forms/FormBuyProduct";
+import smtpTransport from "nodemailer-smtp-transport";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -13,11 +14,18 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-export async function POST(req: Request) {
-  const body: FormSchema[] = await req.json();
+type RequestBody = {
+  studentData: FormSchema[];
+  picNames: string;
+};
 
-  const createList = (dataToConvert: FormSchema) => {
-    const generateString = `
+export async function POST(req: Request) {
+  try {
+    const body: RequestBody = await req.json();
+
+
+    const createList = (dataToConvert: FormSchema) => {
+      const generateString = `
       ${dataToConvert.name}
       Kelas: ${dataToConvert.kelas}
       Jurusan: ${dataToConvert.jurusan}
@@ -29,30 +37,35 @@ export async function POST(req: Request) {
       Nama Paket: ${dataToConvert.packageName}
     `;
 
-    return generateString;
-  };
+      return generateString;
+    };
 
-  const sender = await transporter.sendMail({
-    from: "Admin Sumatif",
-    to: "zakiiws22@gmail.com",
-    subject: "Pembelian product",
-    text: `
-      ${createList(body[0])}
-      ${createList(body[1])}
-      ${createList(body[2])}
-      ${createList(body[3])}
-      ${createList(body[4])}
-      ${createList(body[5])}
-      ${createList(body[6])}
-      ${createList(body[7])}
-      ${createList(body[8])}
-      ${createList(body[9])}
+    await transporter.sendMail({
+      from: "sumatif.com",
+      to: "zakiiws22@gmail.com",
+      subject: body.studentData[0].packageName,
+      text: `
+      ${createList(body.studentData[0])}
+      ${createList(body.studentData[1])}
+      ${createList(body.studentData[2])}
+      ${createList(body.studentData[3])}
+      ${createList(body.studentData[4])}
+      ${createList(body.studentData[5])}
+      ${createList(body.studentData[6])}
+      ${createList(body.studentData[7])}
+      ${createList(body.studentData[8])}
+      ${createList(body.studentData[9])}
 
-      Nama PIC: ${body[0].namePICPendaftaran}
+      Nama PIC: ${body.picNames}
     `
-  });
+    });
 
-  return NextResponse.json({ status: 200, data: "Complete to send" });
+    return NextResponse.json({ status: 200, data: "Complete to send" });
+  } catch (error) {
+    console.log(error);
+
+    return NextResponse.json({ status: 400,  message: "error occurred on the server, try again later"  })
+  }
 }
 
 export const dynamic = "force-static";

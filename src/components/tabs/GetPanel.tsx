@@ -8,7 +8,8 @@ import {
   List,
   ListItem,
   ListIcon,
-  Divider
+  Divider,
+  OrderedList
 } from "@chakra-ui/react";
 import { MdCheckCircle } from "react-icons/md";
 import brain_academy from "../../../public/cms_content/brain_academy.json";
@@ -47,17 +48,15 @@ export default function GetPanel(props: Props) {
         my={{ base: 8 }}
         overflowX='hidden'
         h={{ base: 300, md: "full", lg: 320 }}
-        overflowY={{ base: "scroll", md: "unset", lg: "scroll" }}
+        overflowY={{ base: "scroll", md: "unset", lg: "hidden" }}
       >
-        <List spacing={3}>
+        <OrderedList
+          spacing={{ base: 3, lg: 1 }}
+          px={{ base: 2 }}
+        >
           {mapDataByKey[panelType].benefits.map((benefit, index) => (
             <Fragment key={index}>
               <ListItem>
-                <ListIcon
-                  fontSize='md'
-                  as={MdCheckCircle}
-                  color='green.500'
-                />
                 <Box
                   as='span'
                   color='gray.500  '
@@ -66,10 +65,9 @@ export default function GetPanel(props: Props) {
                   {benefit.description}
                 </Box>
               </ListItem>
-              <Divider />
             </Fragment>
           ))}
-        </List>
+        </OrderedList>
       </Box>
     </TabPanel>
   );

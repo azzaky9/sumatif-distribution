@@ -5,7 +5,6 @@ import { productListCDNLink } from "../sections/ProductProvide";
 import GetPanel from "./GetPanel";
 
 export default function BenefitTabs() {
-
   return (
     <>
       <Tabs
@@ -33,13 +32,8 @@ export default function BenefitTabs() {
         <TabPanels>
           <GetPanel panelType='ruang_belajar' />
           <GetPanel panelType='brain_academy' />
-          <GetPanel
-            panelType='onsite_learning'
-            includeTitle
-          />
         </TabPanels>
       </Tabs>
-     
     </>
   );
 }

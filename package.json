@@ -19,17 +19,21 @@
     "framer-motion": "^10.16.4",
     "next": "13.5.4",
     "nodemailer": "^6.9.7",
+    "nodemailer-smtp-transport": "^2.7.4",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
     "react-icons": "^4.11.0",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "swiper": "^11.0.3"
   },
   "devDependencies": {
     "@types/aos": "^3.0.6",
     "@types/node": "^20.8.7",
+    "@types/nodemailer-smtp-transport": "^2.7.7",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/swiper": "^6.0.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",

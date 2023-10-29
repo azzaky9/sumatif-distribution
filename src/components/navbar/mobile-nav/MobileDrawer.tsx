@@ -18,6 +18,7 @@ import {
 import Link from "next/link";
 import NavbarLogo from "../NavbarLogo";
 import { useRouter } from "next/navigation";
+import ProductMenu from "../ProductMenu";
 
 type Props = {
   handleClose: () => void;
@@ -33,8 +34,7 @@ const createListMenu = (displayName: string, to: string) => ({
 export const menuListData = [
   createListMenu("Home", "#home"),
   createListMenu("Benefits", "#benefits"),
-  createListMenu("Why us", "#why-us"),
-  createListMenu("Price", "#price")
+  createListMenu("Why us", "#why-us")
 ];
 
 export default function MobileDrawer(props: Props) {
@@ -86,6 +86,7 @@ export default function MobileDrawer(props: Props) {
               {data.displayName}
             </ChakraLink>
           ))}
+          <ProductMenu />
         </DrawerBody>
       </DrawerContent>
     </Drawer>
