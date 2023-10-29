@@ -69,9 +69,10 @@ export default function CardDisplayerCustomer(props: Props) {
         throw new Error("Nama PIC pendaftaran wajib di isi");
       }
 
-      const res: { status: number; message: string } = await senderEmail();
+      const res: { status: "success" | "failed"; message: string } =
+        await senderEmail();
 
-      if (res.status === 200) {
+      if (res.status === "success") {
         toast({
           position: "top",
           title: "Data kamu berhasil di kirim,",

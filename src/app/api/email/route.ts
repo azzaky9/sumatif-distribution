@@ -23,7 +23,6 @@ export async function POST(req: Request) {
   try {
     const body: RequestBody = await req.json();
 
-
     const createList = (dataToConvert: FormSchema) => {
       const generateString = `
       ${dataToConvert.name}
@@ -40,31 +39,45 @@ export async function POST(req: Request) {
       return generateString;
     };
 
-    await transporter.sendMail({
+    const mailData = {
       from: "sumatif.com",
       to: process.env.SEND_GMAIL,
       subject: body.studentData[0].packageName,
       text: `
-      ${createList(body.studentData[0])}
-      ${createList(body.studentData[1])}
-      ${createList(body.studentData[2])}
-      ${createList(body.studentData[3])}
-      ${createList(body.studentData[4])}
-      ${createList(body.studentData[5])}
-      ${createList(body.studentData[6])}
-      ${createList(body.studentData[7])}
-      ${createList(body.studentData[8])}
-      ${createList(body.studentData[9])}
+          ${createList(body.studentData[0])}
+          ${createList(body.studentData[1])}
+          ${createList(body.studentData[2])}
+          ${createList(body.studentData[3])}
+          ${createList(body.studentData[4])}
+          ${createList(body.studentData[5])}
+          ${createList(body.studentData[6])}
+          ${createList(body.studentData[7])}
+          ${createList(body.studentData[8])}
+          ${createList(body.studentData[9])}
 
-      Nama PIC: ${body.picNames}
-    `
+          Nama PIC: ${body.picNames}
+        `
+    };
+
+    await new Promise((resolve, reject) => {
+      transporter.sendMail(mailData, (err, info) => {
+        if (err) {
+          console.error(err);
+          reject(err);
+        } else {
+          resolve(info);
+        }
+      });
     });
-
-    return NextResponse.json({ status: 200, data: "Complete to send" });
+    
+    return NextResponse.json({
+      status: "success",
+      data: "Complete to send"
+    });
   } catch (error) {
     console.log(error);
 
-    return NextResponse.json({ status: 400,  message: "error occurred on the server, try again later"  })
+    return NextResponse.error();
   }
 }
 
