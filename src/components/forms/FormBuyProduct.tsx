@@ -90,7 +90,7 @@ export default function FormBuyProduct() {
 
   const handleChangeProduct = () => {
     setListCustomer([]);
-    route.push("/ruang_belajar");
+    route.push("/ruang_belajar", { scroll: false });
   };
 
   return (

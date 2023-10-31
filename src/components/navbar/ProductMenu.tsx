@@ -33,7 +33,7 @@ export default function ProductMenu({ displayText, color }: Props) {
       </MenuButton>
       <MenuList>
         <MenuItem>
-          <Link href='ruang_belajar'>Ruang Belajar</Link>
+          <Link href='ruang_belajar' scroll={false} >Ruang Belajar</Link>
         </MenuItem>
         {/* {under development} */}
         {/* <MenuItem>

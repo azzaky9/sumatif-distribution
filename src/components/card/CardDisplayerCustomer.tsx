@@ -3,10 +3,7 @@
 import { FormSchema, StateListCustomer } from "../forms/FormBuyProduct";
 import {
   Box,
-  List,
-  ListIcon,
   Button,
-  ListItem,
   Text,
   Flex,
   ButtonGroup,
@@ -32,17 +29,29 @@ import PopoverBenefitProduct from "../popovers/Popover";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useMutation } from "react-query";
 import axios, { AxiosError } from "axios";
+import BaseInput, { TBaseInputProps } from "../input/BaseInput";
+import { FaBedPulse } from "react-icons/fa6";
 
 type Props = {
   customerList: StateListCustomer[];
   setCustomerList: TSetStates<StateListCustomer[]>;
 };
 
+type PICData = {
+  picNames: string;
+  picNumber: string;
+};
+
+type OuterProps<T> = Omit<TBaseInputProps<T>, "isInvalid" | "names">;
+
 export default function CardDisplayerCustomer(props: Props) {
   const { customerList, setCustomerList } = props;
 
   const [isSender, setIsSender] = useState(false);
-  const [PICNames, setPICNames] = useState("");
+  const [picData, setPicData] = useState<PICData>({
+    picNames: "",
+    picNumber: ""
+  });
   const [isPICError, setIsPICError] = useState(false);
 
   const toast = useToast();
@@ -57,6 +66,17 @@ export default function CardDisplayerCustomer(props: Props) {
     setCustomerList(deleteSpecificData);
   };
 
+  const onPICDataChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsPICError(false);
+
+    const names = e.target.name as keyof PICData;
+
+    setPicData((prev) => ({
+      ...prev,
+      [names]: e.target.value as string
+    }));
+  };
+
   const handleSubmit = async () => {
     try {
       setIsSender(true);
@@ -65,10 +85,10 @@ export default function CardDisplayerCustomer(props: Props) {
         throw new Error("Minimal harus 10 nama");
       }
 
-      if (!PICNames) {
+      if (!picData.picNames || !picData.picNumber) {
         setIsPICError(true);
 
-        throw new Error("Nama PIC pendaftaran wajib di isi");
+        throw new Error("Data PIC pendaftaran wajib di isi");
       }
 
       const res: { status: "success" | "failed"; message: string } =
@@ -82,10 +102,12 @@ export default function CardDisplayerCustomer(props: Props) {
           status: "success",
           isClosable: true
         });
-      } else {
 
+        setPicData({
+          picNames: "",
+          picNumber: ""
+        });
       }
-      
       setCustomerList([]);
 
       setIsSender(false);
@@ -111,7 +133,7 @@ export default function CardDisplayerCustomer(props: Props) {
 
         const res = await axios.post(`${url}api/email`, {
           studentData: customerList,
-          picNames: PICNames
+          picData
         });
 
         const data = await res.data;
@@ -124,6 +146,20 @@ export default function CardDisplayerCustomer(props: Props) {
       }
     }
   });
+
+  const PICPropsNames: OuterProps<keyof PICData> = {
+    name: "picNames",
+    onChange: onPICDataChange,
+    placeholder: "Names",
+    value: picData.picNames
+  };
+
+  const PICPropsNumber: OuterProps<keyof PICData> = {
+    name: "picNumber",
+    onChange: onPICDataChange,
+    placeholder: "Nomor aktif yang dapat di hubungi",
+    value: picData.picNumber
+  };
 
   return (
     <Card
@@ -173,23 +209,15 @@ export default function CardDisplayerCustomer(props: Props) {
           flexDir='column'
           justifyContent='space-between'
         >
-          <FormControl
+          <BaseInput
             isInvalid={isPICError}
-            mt={4}
-          >
-            <FormLabel fontSize='xs'>
-              Nama PIC Pendaftaran (Nama yang bisa di hubungi)
-            </FormLabel>
-            <Input
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                setIsPICError(false);
-                setPICNames(e.target.value);
-              }}
-              value={PICNames}
-              type='text'
-              placeholder='Nama PIC '
-            />
-          </FormControl>
+            {...PICPropsNames}
+          />
+          <BaseInput
+            isInvalid={isPICError}
+            {...PICPropsNumber}
+          />
+
           <Box
             mt={4}
             w='full'
@@ -228,8 +256,8 @@ export default function CardDisplayerCustomer(props: Props) {
               </PopoverFooter>
             </PopoverBenefitProduct>
             <Button
-              colorScheme='green'
-              variant='ghost'
+              colorScheme='orange'
+              variant='solid'
               onClick={handleSubmit}
               isLoading={isSender}
               loadingText='Sending..'

@@ -32,7 +32,7 @@ export default function CardPrice({ data, hideBuyButton }: Props) {
   const handleBuyProduct = () => {
     setProductSelection(data);
 
-    route.push("/payment");
+    route.push("/payment", { scroll: false });
   };
 
   return (
