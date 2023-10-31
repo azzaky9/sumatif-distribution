@@ -70,8 +70,6 @@ export default function PriceList() {
         const res = await fetch(createQuery);
         const dataJson = (await res.json()) as ResponseShema<ProductPackage[]>;
 
-        console.log(dataJson.data);
-
         return dataJson.data;
       } catch (error) {
         console.log(error);

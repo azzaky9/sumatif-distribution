@@ -82,8 +82,10 @@ export default function CardDisplayerCustomer(props: Props) {
           status: "success",
           isClosable: true
         });
-      }
+      } else {
 
+      }
+      
       setCustomerList([]);
 
       setIsSender(false);
