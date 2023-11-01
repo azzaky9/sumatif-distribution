@@ -26,11 +26,7 @@ export default function RootLayout({
         <RQProviders>
           <ChakraUiProvider>
             <PriceProvider>
-            
-              <Box
-                px={{ base: 4, md: 10, lg: 16 }}
-                pt={5}
-              >
+              <Box>
                 <Navbar />
               </Box>
               {children}

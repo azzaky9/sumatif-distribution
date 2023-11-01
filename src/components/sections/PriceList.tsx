@@ -11,10 +11,9 @@ import {
   useDisclosure
 } from "@chakra-ui/react";
 import ModalLevel from "../modal/ModalLevel";
-import CardPrice from "../card/CardPrice";
-import { usePrice } from "@/context/PriceContext";
-import CustomMenuBtn from "../button-menu/CustomMenuBtn";
+import CustomMenuBtn from "../button/button-menu/CustomMenuBtn";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useMediaQuery } from "@chakra-ui/react";
 import {
   useQuery,
   RefetchOptions,
@@ -22,6 +21,14 @@ import {
   QueryObserverResult
 } from "react-query";
 import { ResponseShema, ProductPackage } from "@/context/PriceContext";
+import Carousel from "../carousel/Carousel";
+import { useSwiperSlide } from "@/hooks/useSwiperSlide";
+import SliderButton from "../button/SliderButton";
+import { Pagination, Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 type TSetStates<T> = Dispatch<SetStateAction<T>>;
 type CurrentSelection = "Ruang Belajar" | "Brain Academy";
@@ -42,6 +49,19 @@ export type TRefetch = <TPageData>(
 export default function PriceList() {
   const route = useRouter();
   const params = useSearchParams();
+
+  const [swiperRef, slidePrev, slideNext] = useSwiperSlide();
+   const [isBetweenMobileDevices] = useMediaQuery("(max-width: 425px)");
+  const [isMinTabletDevices, isMaxTabletDevices] = useMediaQuery([
+    "(min-width: 425px)",
+    "(max-width: 768px)"
+  ]);
+
+  const getSlide = isBetweenMobileDevices
+    ? 1
+    : isMinTabletDevices && isMaxTabletDevices
+    ? 2
+    : 3;
 
   const [currentSelection, setCurrentSelection] = useState<StatesTypes>({
     jenjang: "sd",
@@ -160,9 +180,10 @@ export default function PriceList() {
 
   return (
     <Box
+      width={{ base: "100%" }}
       py={{ base: 2 }}
       rounded={{ base: "xl" }}
-      mb={{ lg: "20" }}
+      
     >
       <ModalLevel
         {...modalProps}
@@ -170,21 +191,29 @@ export default function PriceList() {
       />
 
       <Box
-        w={{ lg: "1150px" }}
-        mt={{ base: "20px" }}
-        p={{ base: "20px" }}
-        rounded='md'
+        h={{ lg: "720px", base: "790px" }}
+        w={{ lg: "90%", base: "100%" }}
+        rounded='lg'
+        mx='auto'
+        display='grid'
+        border='2px'
+        borderColor='gray.100'
+        gridTemplateColumns={{ lg: "15% 1fr" }}
+        bg="white"
+        shadow="md"
       >
         <Stack
-          direction='row'
+          borderTopStartRadius='lg'
+          borderBottomStartRadius='lg'
+          direction={{ base: "row", lg: "column" }}
+          shadow="sm"
+          borderRight="1px"
+          borderRightColor="gray.100"
           gap={4}
-          mb={{ base: "20px" }}
-          p={{ base: 4, lg: 4 }}
-          boxShadow='lg'
-          rounded={{ lg: "xl" }}
-          bg='white'
+          p={{ base: 4, lg: 8 }}
         >
           <CustomMenuBtn
+            title="Jenjang"
             displaySelection={params.get("jenjang")?.toUpperCase() || ""}
             buttonAction={
               <Button
@@ -203,6 +232,7 @@ export default function PriceList() {
             {...kelasMenuDisclosure}
           />
           <CustomMenuBtn
+            title="Durasi Paket"
             displaySelection={`${params.get("month_duration")} Bulan` || ""}
             buttonAction={
               <Button
@@ -221,33 +251,47 @@ export default function PriceList() {
             {...monthDurationDisclosure}
           />
         </Stack>
-        <Box
-          display={{ base: "flex" }}
-          flexDirection={{ base: "column", lg: "row" }}
-          gap={{ base: 18 }}
-          overflowX={{ base: "hidden", lg: "scroll" }}
-          pb={{ lg: 8 }}
-          h={{ base: "650px" }}
-        >
-          {data && data.length > 0 ? (
-            data.map((product) => (
-              <Box
-                key={product.id}
-                h='full'
-                w='fit-content'
-              >
-                <CardPrice
-                  hideBuyButton={false}
-                  data={product}
+        {data && data.length > 0 ? (
+          <Carousel
+            config={{
+              pagination: {
+                type: "progressbar"
+              },
+              onBeforeInit: (swiper) => {
+                swiperRef.current = swiper;
+              },
+              slidesPerView: getSlide,
+              className: "mySwiper",
+              modules: [Pagination, Navigation],
+              style: {
+                width: "100%",
+                backgroundColor: "transparent",
+                borderRadius: "20px",
+                paddingBottom: "45px"
+              }
+            }}
+            displayModel='PRICELIST'
+            dataToDisplay={data}
+            customButton={{
+              nextButton: (
+                <SliderButton
+                  direction='next'
+                  clickHandler={slideNext}
                 />
-              </Box>
-            ))
-          ) : isLoading || isRefetching ? (
-            <LoadIndicator />
-          ) : (
-            <p>Data not found</p>
-          )}
-        </Box>
+              ),
+              previousButton: (
+                <SliderButton
+                  direction='prev'
+                  clickHandler={slidePrev}
+                />
+              )
+            }}
+          />
+        ) : isLoading || isRefetching ? (
+          <LoadIndicator />
+        ) : (
+          <p>Data not found</p>
+        )}
       </Box>
     </Box>
   );

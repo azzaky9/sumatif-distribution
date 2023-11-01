@@ -39,13 +39,13 @@ export default function CardPrice({ data, hideBuyButton }: Props) {
     <>
       {data && (
         <Card
+          w="370px"
           rounded='2xl'
           shadow='md'
           variant='outline'
-          w='fit-content'
           bg='white'
         >
-          <CardBody w={{ lg: "385px" }}>
+          <CardBody>
             <Stack
               mt='6'
               spacing='3'

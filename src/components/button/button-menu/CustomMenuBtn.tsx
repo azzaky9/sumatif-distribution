@@ -4,7 +4,6 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
   Button,
   Divider,
   Box,
@@ -12,7 +11,6 @@ import {
   MenuItemOption,
   UseDisclosureProps
 } from "@chakra-ui/react";
-import { useSearchParams, useRouter } from "next/navigation";
 import { BsChevronDown } from "react-icons/bs";
 
 type Props = {
@@ -22,7 +20,9 @@ type Props = {
   selectionChangeHandler: (value: any, nameToset: string) => void;
   stateKey: string;
   displaySelection: string
+  title: string
 };
+
 
 export default function CustomMenuBtn(props: Props & UseDisclosureProps) {
   const {
@@ -33,7 +33,8 @@ export default function CustomMenuBtn(props: Props & UseDisclosureProps) {
     stateKey,
     isOpen,
     onOpen,
-    displaySelection
+    displaySelection,
+    title
   } = props;
 
   
@@ -49,11 +50,11 @@ export default function CustomMenuBtn(props: Props & UseDisclosureProps) {
       >
         {displaySelection}
       </MenuButton>
-      <MenuList>
+      <MenuList zIndex="2" >
         <MenuOptionGroup
           value={currentSelection}
           onChange={(value) => selectionChangeHandler(value, stateKey)}
-          title='Jenjang'
+          title={title}
           type='radio'
         >
           {listMenu.map((menuItem, index) => (
