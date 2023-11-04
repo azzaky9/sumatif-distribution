@@ -46,7 +46,7 @@ export default function Carousel(props: Props) {
   return (
     <Swiper {...config}>
       {dataToDisplay.map((data, index) => (
-        <SwiperSlide key={data.id}>
+        <SwiperSlide key={index}>
           {getDisplayerComp(displayModel, data)}
         </SwiperSlide>
       ))}

@@ -25,10 +25,12 @@ import Carousel from "../carousel/Carousel";
 import { useSwiperSlide } from "@/hooks/useSwiperSlide";
 import SliderButton from "../button/SliderButton";
 import { Pagination, Navigation } from "swiper/modules";
+import { LoadIndicator } from "../utils/LoadIndicator";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { DisplayNotFound } from "@/components/utils/DisplayNotFound";
 
 type TSetStates<T> = Dispatch<SetStateAction<T>>;
 type CurrentSelection = "Ruang Belajar" | "Brain Academy";
@@ -51,7 +53,7 @@ export default function PriceList() {
   const params = useSearchParams();
 
   const [swiperRef, slidePrev, slideNext] = useSwiperSlide();
-   const [isBetweenMobileDevices] = useMediaQuery("(max-width: 425px)");
+  const [isBetweenMobileDevices] = useMediaQuery("(max-width: 425px)");
   const [isMinTabletDevices, isMaxTabletDevices] = useMediaQuery([
     "(min-width: 425px)",
     "(max-width: 768px)"
@@ -183,7 +185,6 @@ export default function PriceList() {
       width={{ base: "100%" }}
       py={{ base: 2 }}
       rounded={{ base: "xl" }}
-      
     >
       <ModalLevel
         {...modalProps}
@@ -199,21 +200,22 @@ export default function PriceList() {
         border='2px'
         borderColor='gray.100'
         gridTemplateColumns={{ lg: "15% 1fr" }}
-        bg="white"
-        shadow="md"
+        bg='white'
+        shadow='md'
       >
         <Stack
           borderTopStartRadius='lg'
           borderBottomStartRadius='lg'
           direction={{ base: "row", lg: "column" }}
-          shadow="sm"
-          borderRight="1px"
-          borderRightColor="gray.100"
+          bgGradient='linear-gradient(25deg, rgba(22,182,211,1) 6%, rgba(5,130,250,1) 68%)'
+          shadow='sm'
+          borderRight='1px'
+          borderRightColor='gray.100'
           gap={4}
           p={{ base: 4, lg: 8 }}
         >
           <CustomMenuBtn
-            title="Jenjang"
+            title='Jenjang'
             displaySelection={params.get("jenjang")?.toUpperCase() || ""}
             buttonAction={
               <Button
@@ -232,7 +234,7 @@ export default function PriceList() {
             {...kelasMenuDisclosure}
           />
           <CustomMenuBtn
-            title="Durasi Paket"
+            title='Durasi Paket'
             displaySelection={`${params.get("month_duration")} Bulan` || ""}
             buttonAction={
               <Button
@@ -290,38 +292,13 @@ export default function PriceList() {
         ) : isLoading || isRefetching ? (
           <LoadIndicator />
         ) : (
-          <p>Data not found</p>
+          <DisplayNotFound />
         )}
       </Box>
     </Box>
   );
 }
 
-export const LoadIndicator = () => {
-  return (
-    <Box
-      display='grid'
-      gap={5}
-      placeContent='center'
-      w='full'
-      h='full'
-    >
-      <Flex
-        direction='row'
-        gap={8}
-      >
-        <Spinner size='lg' />
-        <Text
-          fontSize='xl'
-          textAlign='center'
-          mt={2}
-        >
-          Please wait...
-        </Text>
-      </Flex>
-    </Box>
-  );
-};
 
 export { selectionLevelList, selectionProductList };
 

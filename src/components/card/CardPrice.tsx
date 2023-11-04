@@ -18,14 +18,16 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { MdCheckCircle } from "react-icons/md";
+import { LiaCartPlusSolid } from "react-icons/lia";
 import { ProductPackage } from "@/context/PriceContext";
 
 type Props = {
   data: ProductPackage | null;
   hideBuyButton?: boolean;
+  baseWidth?: boolean;
 };
 
-export default function CardPrice({ data, hideBuyButton }: Props) {
+export default function CardPrice({ data, hideBuyButton, baseWidth }: Props) {
   const { setProductSelection } = usePrice();
   const route = useRouter();
 
@@ -39,7 +41,9 @@ export default function CardPrice({ data, hideBuyButton }: Props) {
     <>
       {data && (
         <Card
-          w="370px"
+          maxW='368px'
+          flex="none"
+          width="360px"
           rounded='2xl'
           shadow='md'
           variant='outline'
@@ -106,8 +110,11 @@ export default function CardPrice({ data, hideBuyButton }: Props) {
               <ButtonGroup spacing='2'>
                 <Button
                   variant='solid'
-                  colorScheme='orange'
+                  colorScheme='telegram'
                   onClick={handleBuyProduct}
+                  rightIcon={
+                    <LiaCartPlusSolid style={{ fontSize: "1.3rem" }} />
+                  }
                 >
                   Buy now
                 </Button>

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Box, Heading, } from "@chakra-ui/react";
-import { LoadIndicator } from "@/components/sections/PriceList";
+import { LoadIndicator } from "../utils/LoadIndicator";
 import SliderDiscoverProducts from "../carousel/RecommendCarousel";
 
 import "swiper/css";

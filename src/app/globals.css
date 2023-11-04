@@ -14,33 +14,16 @@ body {
   /* Center slide text vertically */
 }
 
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background: #ff5733 !important; /* Change this to your desired color */
+}
+
 .swiper-pagination-progressbar-fill {
   border: 2px solid #fb8351;
 }
 
 .swiper-pagination-progressbar {
   background-color: rgba(255, 255, 255, 0.3);
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #e1e1e1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #fb8351;
-  height: 120px;
-  border-radius: 18px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #fb8351;
 }
 
 @media only screen and (max-width: 768px) {

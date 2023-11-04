@@ -42,7 +42,7 @@ const SliderDiscoverProducts = ({ dataFromQuery }: Props) => {
     className: "mySwiper",
     modules: [Pagination, Navigation],
     style: {
-      width: "85%",
+      width: "95%",
       height: "100%"
     }
   };

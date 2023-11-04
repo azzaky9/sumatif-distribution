@@ -29,7 +29,7 @@ export default function Navbar() {
     <Box
       px={{ base: 4, md: 10, lg: 16 }}
       pt={5}
-      bg={{ base: path === "/ruang_belajar" ? "orange.50" : "white" }}
+      bg={{ base: path === "/ruang_belajar" || path === "/brain_academy" ? "orange.50" : "white" }}
     >
       <Flex
         as='div'

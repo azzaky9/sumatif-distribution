@@ -36,10 +36,10 @@ export default function ProductMenu({ displayText, color }: Props) {
           <Link href='ruang_belajar' scroll={false} >Ruang Belajar</Link>
         </MenuItem>
         {/* {under development} */}
-        {/* <MenuItem>
+        <MenuItem>
           <Link href='brain_academy'>Brain Academy</Link>
         </MenuItem>
-        <MenuItem>
+        {/* <MenuItem>
           <Link href='onsite_learning'>Onsite Learning</Link>
         </MenuItem> */}
       </MenuList>

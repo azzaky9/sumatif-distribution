@@ -5,25 +5,20 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalCloseButton,
   ModalBody,
   ModalFooter,
   Button,
-  useDisclosure,
-  UseDisclosureProps,
   Box,
-  Heading,
   Text,
   Stack
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   StatesTypes,
   TRefetch,
   TSetStates,
-  selectionLevelList
 } from "../sections/PriceList";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type Props = {
   isOpen: boolean;

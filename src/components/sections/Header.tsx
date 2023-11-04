@@ -39,7 +39,7 @@ export default function Header() {
         >
           <Text
             lineHeight={1.3}
-            fontSize={{ base: "2.7rem", md: "6xl", lg: "7xl" }}
+            fontSize={{ base: "2.7rem", md: "6xl", lg: "6xl" }}
             fontWeight='bold'
           >
             <Highlight

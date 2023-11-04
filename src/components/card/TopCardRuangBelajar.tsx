@@ -12,6 +12,12 @@ import {
 import { MdCheckCircle } from "react-icons/md";
 import { PiArrowBendRightDownBold } from "react-icons/pi";
 
+const createListValue = [
+  "96% nilai pengguna terbukti naik setelah 3 bulan berlangganan ruangbelajar",
+  "98% pengguna terbantu dengan pemahaman konsep ala ruangbelajar",
+  "9.3/10 pengguna puas belajar menggunakan ruangbelajar"
+];
+
 export default function TopCardRuangBelajar() {
   return (
     <Box
@@ -54,46 +60,36 @@ export default function TopCardRuangBelajar() {
             Pendapat Mereka:
           </Heading>
           <List spacing={10}>
-            <ListItem
-              bg='blackAlpha.50'
-              p={4}
-              rounded='xl'
-              fontSize={{ lg: "2xl", base: "xl" }}
-            >
-              <ListIcon
-                as={MdCheckCircle}
-                color='green.500'
-              />
-              96% nilai pengguna terbukti naik setelah 3 bulan berlangganan
-              ruangbelajar
-            </ListItem>
-            <ListItem
-              bg='blackAlpha.50'
-              p={4}
-              rounded='xl'
-              fontSize={{ lg: "2xl", base: "xl" }}
-            >
-              <ListIcon
-                as={MdCheckCircle}
-                color='green.500'
-              />
-              98% pengguna terbantu dengan pemahaman konsep ala ruangbelajar
-            </ListItem>
-            <ListItem
-              bg='blackAlpha.50'
-              p={4}
-              rounded='xl'
-              fontSize={{ lg: "2xl", base: "xl" }}
-            >
-              <ListIcon
-                as={MdCheckCircle}
-                color='green.500'
-              />
-              9.3/10 pengguna puas belajar menggunakan ruangbelajar
-            </ListItem>
+            <GenerateChildList listValue={createListValue} />
           </List>
         </Box>
       </Box>
     </Box>
   );
 }
+
+type Props = {
+  listValue: string[];
+};
+
+export const GenerateChildList = ({ listValue }: Props) => {
+  return (
+    <>
+      {listValue.map((value, index) => (
+        <ListItem
+          key={index}
+          bg='blackAlpha.50'
+          p={4}
+          rounded='xl'
+          fontSize={{ lg: "2xl", base: "xl" }}
+        >
+          <ListIcon
+            as={MdCheckCircle}
+            color='green.500'
+          />
+          {value}
+        </ListItem>
+      ))}
+    </>
+  );
+};
