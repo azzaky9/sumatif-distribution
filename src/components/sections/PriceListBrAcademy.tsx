@@ -44,7 +44,7 @@ export default function PriceListBrAcademy() {
     queryKey: ["brain-academy"],
     queryFn: async () => {
       try {
-        const url = `https://jn0rst6z-8080.asse.devtunnels.ms/api/product/ruang-guru/brain-acedemy?learnMethod=online&kelas=${selected}`;
+        const url = `${process.env.NEXT_PUBLIC_API_URL}api/product/ruang-guru/brain-acedemy?learnMethod=online&kelas=${selected}`;
 
         const response = await axios.get(url);
 
