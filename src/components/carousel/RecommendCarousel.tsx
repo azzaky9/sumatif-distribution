@@ -43,7 +43,8 @@ const SliderDiscoverProducts = ({ dataFromQuery }: Props) => {
     modules: [Pagination, Navigation],
     style: {
       width: "95%",
-      height: "100%"
+      height: "100%",
+      paddingBottom: "40px"
     }
   };
 

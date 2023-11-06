@@ -75,7 +75,7 @@ export default function WhyUs() {
           w={{ lg: "80%" }}
           ms={{ lg: "60px" }}
         >
-          <Heading fontSize={{ base: "xl", md: "xl", lg: "3xl" }}>
+          <Heading textAlign="center" mb={2} fontSize={{ base: "2xl", md: "xl", lg: "3xl" }}>
             <Highlight
               query='Mengapa?'
               styles={{
@@ -83,17 +83,14 @@ export default function WhyUs() {
                 px: 2,
                 py: 1,
                 rounded: "xl",
-                color: "orange.500"
+                color: "orange.500",
+                
               }}
             >
               Alasan Mengapa? Harus Berlangganan Di Sumatif
             </Highlight>
           </Heading>
-          <Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-            quam quisquam quibusdam consequuntur quia aliquid quasi laborum!
-            Molestias, dolorem ullam.
-          </Text>
+        
         </Box>
 
         <SimpleGrid

@@ -50,10 +50,10 @@ const productList: List[] = [
     text: "Brain Academy",
     linkTo: "/brain_academy"
   },
-  {
-    text: "Onsite Learning",
-    linkTo: "/onsite_learning"
-  }
+  // {
+  //   text: "Onsite Learning",
+  //   linkTo: "/onsite_learning"
+  // }
 ];
 
 export default function Footer() {

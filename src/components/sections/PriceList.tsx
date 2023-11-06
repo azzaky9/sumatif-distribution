@@ -8,7 +8,10 @@ import {
   Spinner,
   Stack,
   Text,
-  useDisclosure
+  GridItem,
+  useDisclosure,
+  Grid,
+  Heading
 } from "@chakra-ui/react";
 import ModalLevel from "../modal/ModalLevel";
 import CustomMenuBtn from "../button/button-menu/CustomMenuBtn";
@@ -26,6 +29,7 @@ import { useSwiperSlide } from "@/hooks/useSwiperSlide";
 import SliderButton from "../button/SliderButton";
 import { Pagination, Navigation } from "swiper/modules";
 import { LoadIndicator } from "../utils/LoadIndicator";
+import CardPrice from "../card/CardPrice";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -191,7 +195,7 @@ export default function PriceList() {
         refetchProduct={refetch}
       />
 
-      <Box
+      <Grid
         h={{ lg: "720px", base: "790px" }}
         w={{ lg: "90%", base: "100%" }}
         rounded='lg'
@@ -199,21 +203,29 @@ export default function PriceList() {
         display='grid'
         border='2px'
         borderColor='gray.100'
-        gridTemplateColumns={{ lg: "15% 1fr" }}
+        templateColumns='repeat(5, 1fr)'
         bg='white'
         shadow='md'
       >
-        <Stack
-          borderTopStartRadius='lg'
-          borderBottomStartRadius='lg'
-          direction={{ base: "row", lg: "column" }}
+        <GridItem
+          colSpan={{ base: 5, lg: 1 }}
+          rounded={{ base: "lg", lg: "lg" }}
+          // direction={{ base: "row", lg: "column" }}
           bgGradient='linear-gradient(25deg, rgba(22,182,211,1) 6%, rgba(5,130,250,1) 68%)'
           shadow='sm'
+          display='flex'
+          flexDir={{ base: "row", lg: "column" }}
           borderRight='1px'
           borderRightColor='gray.100'
           gap={4}
           p={{ base: 4, lg: 8 }}
         >
+          <Heading
+            color='white'
+            fontSize='lg'
+          >
+            Pilihan Paket dari Ruang Belajar
+          </Heading>
           <CustomMenuBtn
             title='Jenjang'
             displaySelection={params.get("jenjang")?.toUpperCase() || ""}
@@ -252,53 +264,41 @@ export default function PriceList() {
             listMenu={["1 Bulan", "9 Bulan"]}
             {...monthDurationDisclosure}
           />
-        </Stack>
-        {data && data.length > 0 ? (
-          <Carousel
-            config={{
-              pagination: {
-                type: "progressbar"
-              },
-              onBeforeInit: (swiper) => {
-                swiperRef.current = swiper;
-              },
-              slidesPerView: getSlide,
-              className: "mySwiper",
-              modules: [Pagination, Navigation],
-              style: {
-                width: "100%",
-                backgroundColor: "transparent",
-                borderRadius: "20px",
-                paddingBottom: "45px"
-              }
-            }}
-            displayModel='PRICELIST'
-            dataToDisplay={data}
-            customButton={{
-              nextButton: (
-                <SliderButton
-                  direction='next'
-                  clickHandler={slideNext}
+        </GridItem>
+        <GridItem
+          py={5}
+          colSpan={{ base: 5, lg: 4 }}
+          px={5}
+          overflowX='scroll'
+          h='680px'
+          bg='white'
+          rounded='xl'
+        >
+          <Box
+            w='full'
+            h='full'
+            gap={{ base: 10, lg: 5 }}
+            display='flex'
+          >
+            {data && data.length !== 0 ? (
+              data.map((item, index) => (
+                <CardPrice
+                  hideBuyButton={false}
+                  data={item}
+                  key={index}
                 />
-              ),
-              previousButton: (
-                <SliderButton
-                  direction='prev'
-                  clickHandler={slidePrev}
-                />
-              )
-            }}
-          />
-        ) : isLoading || isRefetching ? (
-          <LoadIndicator />
-        ) : (
-          <DisplayNotFound />
-        )}
-      </Box>
+              ))
+            ) : isLoading || isRefetching ? (
+              <LoadIndicator />
+            ) : (
+              <DisplayNotFound />
+            )}
+          </Box>
+        </GridItem>
+      </Grid>
     </Box>
   );
 }
-
 
 export { selectionLevelList, selectionProductList };
 

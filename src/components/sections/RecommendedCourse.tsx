@@ -21,7 +21,7 @@ export default function RecommendedCourse() {
     <Box
       id='products'
       py={24}
-      px={{ base: 8, lg: 24 }}
+      px={{ base: 0, lg: 24 }}
     >
       <Box
         w='full'
@@ -30,7 +30,7 @@ export default function RecommendedCourse() {
         <Box
           display='flex'
           pb={12}
-          px={{ base: 4, lg: 24 }}
+          px={{ base: 9, lg: 24 }}
           justifyContent='space-between'
           alignItems='center'
         >

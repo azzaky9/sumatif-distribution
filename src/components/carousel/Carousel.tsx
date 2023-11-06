@@ -1,11 +1,9 @@
 "use client";
 
 import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
-import { Swiper as SwiperType } from "swiper";
 import { ProductPackage } from "@/context/PriceContext";
-import { Heading, Box, IconButton } from "@chakra-ui/react";
+import { Heading, Box } from "@chakra-ui/react";
 import CardPrice from "../card/CardPrice";
-import CustomMenuBtn from "../button/button-menu/CustomMenuBtn";
 import RecommendCourseCard from "../card/RecommendCourseCard";
 
 type CustomButton = {
@@ -52,7 +50,7 @@ export default function Carousel(props: Props) {
       ))}
       <Box
         position='absolute'
-        bottom={{ lg: "20px", base: "10px" }}
+        bottom={{ base: "-50px", lg: "5px" }}
         left={{ lg: "-20px", base: "0" }}
         w={{ base: "100%" }}
         display='grid'
