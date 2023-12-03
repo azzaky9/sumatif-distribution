@@ -10,9 +10,8 @@ export default function Home() {
   return (
     <Box as='main'>
       <Header />
-      <ProductProvide />
-      <RecommendedCourse />
       <Benefit />
+      <RecommendedCourse />
       <OnsiteLearning />
       <WhyUs />
     </Box>

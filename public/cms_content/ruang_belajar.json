@@ -1,33 +1,24 @@
 {
-  "title": "Ruang Belajar",
-  "description": "Ruang belajar adalah platform pembelajaran online yang merupakan suplemen pendidikan dengan konten yang lengkap. Kenapa ruangbelajar dibutuhkan oleh Berikut beberapa alasannya",
+  "title": "Pelatihan PPG (Pendidikan Profesi Guru)",
+  "description": "Peningkatan kompetensi Guru melalui pelatihan tatap muka selama 3 hari 2 malam. Tema pelatihan yang mengarah pada Persiapan Mengikuti PPG. Dengan minimal 50 orang per rombel/modul dan 3 modul pelatihan lengkap yang disiapkan.",
   "benefits": [
     {
-      "description": "Harganya terjangkau untuk semua kalangan, mulai dari SD, SMP, SMA maupun fokus UTBK-SNBT untuk selesi PTN"
+      "description": "Peningkatan Kompetensi Guru melalui Pendekatan Intensif"
     },
     {
-      "description": "Dapat digunakan dimanapun dan kapanpun. Sehingga relatif lebih aman dan efisien"
+      "description": "Fokus pada Persiapan Mengikuti Pendidikan Profesi Guru (PPG)"
     },
     {
-      "description": "Terdiri dari ribuan video pembelajaran yang sudah terangkum per materi mata pelajaran dan dapat diputar berulang-ulang secara offline. Penyajian videonya disesuaikan dengan jenjang pendidikan siswa, sehingga menarik untuk ditonton"
+      "description": "Modul Pelatihan yang Komprehensif dan Terstruktur"
     },
     {
-      "description": "Durasi videonya relatif sudah disesuaikan dengan kebutuhan siswa agar belajar menjadi menyenangkan"
+      "description": "Pengalaman Tatap Muka Intensif selama 3 hari 2 malam"
     },
     {
-      "description": "Terdapat ribuan soal-soal yang sering muncul dalam ujian berikut penyelesaiannya dalam bentuk materi dan video yang sudah terintegrasi dengan materi pembelajarannya"
+      "description": "Kelas dengan Jumlah Peserta Optimal (Minimal 50 Orang per Rombel/Modul)"
     },
     {
-      "description": "Rangkuman materi yang disajikan sesuai kebutuhan, sehingga siswa tidak bosan saat mempelajarinya"
-    },
-    {
-      "description": "Ada program adapto, serasa belajar dengan guru privat dimana siswa bisa memilih penjelasan yang detail dan cepat dari materi yang dipelajarinya"
-    },
-    {
-      "description": "Siswa bisa mengatur jadwal belajarnya secara fleksibel melalui gadgetnya"
-    },
-    {
-      "description": "Ada kontrol orangtua, sehingga orangtua akan tahu progress dari pembelajaan anaknya"
+      "description": "Tersedia 3 Modul Pelatihan Lengkap untuk Kebutuhan yang Berbeda"
     }
   ]
 }

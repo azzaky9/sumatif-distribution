@@ -35,7 +35,7 @@ export default function ProductProvide() {
           fontSize={{ base: "2xl", lg: "3xl" }}
           fontWeight='semibold'
         >
-          Kami Menyediakan Product pilihan terbaik dari ruang Guru
+          Kami Menyediakan Product pilihan terbaik.
         </Text>
       </Box>
 
@@ -46,19 +46,10 @@ export default function ProductProvide() {
         mb={{ base: 12 }}
         flexDirection={{ base: "column", md: "row" }}
       >
-        {productListCDNLink.map((product, index) => (
-          <Fragment key={index}>
-            {product.as === "image" && (
-              <Image
-                key={index}
-                filter='grayscale(1)'
-                width={{ base: "160px", lg: "200px" }}
-                height={{ base: "80px" }}
-                alt={product.alt}
-                src={product.link}
-              />
-            )}
-          </Fragment>
+        {["Pelatihan PPG (Pendidikan Profesi Guru", "Super Parenting Training and Family Gathering"].map((product, index) => (
+          <Box key={index} as="h5" fontSize="lg" >
+            {product}
+          </Box>
         ))}
       </Box>
     </SimpleGrid>

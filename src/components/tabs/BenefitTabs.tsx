@@ -13,20 +13,11 @@ export default function BenefitTabs() {
         colorScheme='orange'
       >
         <TabList>
-          {productListCDNLink.map((product, index) => (
-            <Tab key={index}>
-              {product.as === "image" ? (
-                <Image
-                  key={index}
-                  width='100px'
-                  height='40px'
-                  src={product.link}
-                  alt={product.alt}
-                />
-              ) : (
-                <product.link style={{ fontSize: "2rem" }} />
-              )}
-            </Tab>
+          {[
+            "Pelatihan PPG (Pendidikan Profesi Guru)",
+            "Super Parenting Training and Family Gathering"
+          ].map((product, index) => (
+            <Tab key={index} fontSize="sm" >{product}</Tab>
           ))}
         </TabList>
         <TabPanels>

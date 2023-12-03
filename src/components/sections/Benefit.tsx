@@ -2,7 +2,7 @@
 
 import { Box, Button, Heading, Flex, Image, Highlight } from "@chakra-ui/react";
 import BenefitTabs from "../tabs/BenefitTabs";
-import BenefitsImage from "../../../public/images/benefit_section.webp";
+import BenefitsImage from "../../../public/images/pretty-asian-teacher-smiling-camera-back-classroom-elementary-school-vintage-effect-style-pictures.jpg";
 
 export default function Benefit() {
   return (
@@ -22,19 +22,20 @@ export default function Benefit() {
       >
         <Box
           w={650}
-          h={500}
-          border='2px'
+          h={450}
           zIndex='-1'
-          borderColor='orange.500'
-          rounded='2xl'
+          bg='gray.100'
+          rounded='xl'
           position='absolute'
           left='-10'
           top='12'
         />
 
         <Image
+          rounded="xl"
           alt='Benefit_section_picture'
           src={BenefitsImage.src}
+          objectFit="contain"
           width={650}
           height={500}
         />
@@ -47,12 +48,12 @@ export default function Benefit() {
           alignItems={{ base: "center" }}
         >
           <Heading
-            fontSize={{ base: "2xl", lg: "2xl" }}
+            fontSize={{ base: "2xl", lg: "3xl" }}
             textAlign={{ base: "start", lg: "start" }}
             w={{ md: "85%", lg: "full" }}
           >
             <Highlight
-              query='Interaktif'
+              query='Berkualitas'
               styles={{
                 bg: "orange.50",
                 px: 2,
@@ -61,7 +62,7 @@ export default function Benefit() {
                 color: "orange.500"
               }}
             >
-              Pembelajaran Online yang Menarik, Terjangkau, serta Interaktif
+              Pilihan Pelatihan Berkualitas
             </Highlight>
           </Heading>
         </Box>

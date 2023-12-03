@@ -9,7 +9,7 @@ import {
   Highlight
 } from "@chakra-ui/react";
 import { HiArrowRight as ArrowRightIcon } from "react-icons/hi2";
-import illustration from "../../../public/images/content.jpg";
+import illustration from "../../../public/images/happy-cheerful-asian-family-dad-mom-kids-having-fun-using-digital-tablet-video-call-sofa-house.jpg";
 import { Image } from "@chakra-ui/react";
 // import { motion } from "framer-motion";
 
@@ -39,7 +39,7 @@ export default function Header() {
         >
           <Text
             lineHeight={1.3}
-            fontSize={{ base: "2.7rem", md: "6xl", lg: "6xl" }}
+            fontSize={{ base: "2.7rem", md: "5xl", lg: "5xl" }}
             fontWeight='bold'
           >
             <Highlight
@@ -52,7 +52,7 @@ export default function Header() {
                 color: "orange.500"
               }}
             >
-              Official Partner Bimbel Online & Offline Ruang Guru
+            Kemajuan Profesional & Keluarga Berkualitas dengan Sumatif!
             </Highlight>
           </Text>
 
@@ -63,9 +63,10 @@ export default function Header() {
             fontSize={{ base: "medium", md: "medium" }}
             paddingLeft={3}
           >
-            Kami menawarkan program pendidikan terbaik dari tim ahli Ruangguru.
-            Bantu siswa Anda memahami kurikulum sekolah dan siap menghadapi
-            ujian standar.
+            Selamat datang di Sumatif, tempatnya peningkatan kompetensi bagi
+            para Guru dan pelatihan super bagi orangtua! Kami menyediakan
+            pelatihan tatap muka yang intensif, didukung oleh tema yang relevan
+            dan modul yang komprehensif.
           </Text>
           <Button
             mt={17}
@@ -84,11 +85,12 @@ export default function Header() {
           placeContent='center'
           position='relative'
         >
+          <Box position="absolute" w="100%" h={310} left={5} top={5} p={10} bg="gray.100" rounded="xl" zIndex={-10}  />
           <Image
             data-aos='fade-down'
             ml={20}
+            height={310}
             rounded='lg'
-            h='380px'
             src={illustration.src}
             alt='freepik-two-entreprenur-happy'
           />

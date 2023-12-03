@@ -14,7 +14,7 @@ export default function Page() {
 
   useEffect(() => {
     if (!productSelection) route.push("/");
-  }, [productSelection]);
+  }, [productSelection, route]);
 
   return (
     <Box
