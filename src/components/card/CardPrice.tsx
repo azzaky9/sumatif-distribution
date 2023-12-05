@@ -42,8 +42,8 @@ export default function CardPrice({ data, hideBuyButton, baseWidth }: Props) {
       {data && (
         <Card
           maxW='368px'
-          flex="none"
-          width="360px"
+          flex='none'
+          width='360px'
           rounded='2xl'
           shadow='md'
           variant='outline'
@@ -57,42 +57,44 @@ export default function CardPrice({ data, hideBuyButton, baseWidth }: Props) {
               <Heading size='md'>{data.title}</Heading>
               <Text fontSize={{ base: "sm" }}>{data.description}</Text>
             </Stack>
-            <Stack
-              direction='column'
-              gap={4}
-              mt='3'
-              h={240}
-              overflow={{ base: "scroll" }}
-              overflowX={{ base: "hidden" }}
-            >
-              {data.fitur.map((ft, index) => (
-                <Box key={index}>
-                  <Heading
-                    fontSize='md'
-                    mb={{ base: 4 }}
-                  >
-                    {ft.heading}
-                  </Heading>
-                  <List spacing={3}>
-                    {ft.list_fitur.map((lf, index) => (
-                      <ListItem
-                        key={index}
-                        fontSize={{ base: "sm" }}
-                      >
-                        <ListIcon
-                          as={MdCheckCircle}
-                          color='green.500'
-                        />
-                        {lf}
-                      </ListItem>
-                    ))}
-                  </List>
-                </Box>
-              ))}
-            </Stack>
+            {data.fitur && (
+              <Stack
+                direction='column'
+                gap={4}
+                mt='3'
+                h={240}
+                overflow={{ base: "scroll" }}
+                overflowX={{ base: "hidden" }}
+              >
+                {data.fitur.map((ft, index) => (
+                  <Box key={index}>
+                    <Heading
+                      fontSize='md'
+                      mb={{ base: 4 }}
+                    >
+                      {ft.heading}
+                    </Heading>
+                    <List spacing={3}>
+                      {ft.list_fitur.map((lf, index) => (
+                        <ListItem
+                          key={index}
+                          fontSize={{ base: "sm" }}
+                        >
+                          <ListIcon
+                            as={MdCheckCircle}
+                            color='green.500'
+                          />
+                          {lf}
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Box>
+                ))}
+              </Stack>
+            )}
             <Box mt={{ base: 5 }}>
               <DisplayDiscount
-                percent={data.discount}
+                percent={data.discount ? data.discount : 0}
                 priceDiscount={data.price.before_discount}
               />
               <Text

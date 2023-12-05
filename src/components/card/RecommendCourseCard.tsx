@@ -3,128 +3,89 @@
 import React from "react";
 import {
   Card,
-  Image,
   CardFooter,
   CardBody,
   Text,
   Box,
   Heading,
-  Button,
-  Stack,
-  PopoverArrow,
-  PopoverHeader,
-  PopoverCloseButton,
-  PopoverBody,
-  List,
-  ListItem,
-  ListIcon
+  Button
 } from "@chakra-ui/react";
-import { BsChevronDown } from "react-icons/bs";
-import bgCover from "../../../public/images/office-tools-multicolored-surface.jpg";
-import PopoverBenefitProduct from "../popovers/Popover";
-import { ProductPackage } from "@/context/PriceContext";
-import { DisplayDiscount } from "./CardPrice";
-import { MdCheckCircle } from "react-icons/md";
+import { BiCartAdd } from "react-icons/bi";
+import { usePrice } from "@/context/PriceContext";
+import { useRouter } from "next/navigation";
 
-type Props = {
-  productData: ProductPackage;
+export type Product = {
+  title: string;
+  description: string;
+  price: string;
+  cover?: string;
 };
 
-export default function RecommendCourseCard({ productData }: Props) {
+export default function ProductCard(props: Product) {
+  const { setProductSelection } = usePrice();
+
+  const router = useRouter();
+
+  const { description, title, price, cover } = props;
+
+  const handleClick = () => {
+    setProductSelection({
+      title,
+      description,
+      price: {
+        after_discount: price,
+        before_discount: price
+      }
+    });
+
+    router.push("/payment");
+  };
+
   return (
     <Card
-      variant='outline'
-      rounded='2xl'
+      variant='elevated'
+      rounded='3xl'
+      maxW={360}
     >
-      <Box
-        rounded='2xl'
-        height={200}
-        w='full'
-      >
-        <Image
-          rounded='2xl'
-          objectFit='cover'
-          w='full'
-          h={200}
-          src={bgCover.src}
-          alt='bg-vector-illustrate'
-        />
-      </Box>
-
       <CardBody>
         <Box
-          display='grid'
-          gridTemplateRows={{ base: "70px 60px" }}
-          placeContent='center'
-          alignContent='center'
+          display='flex'
+          flexDir='column'
         >
-          <Heading size='sm'>{productData.title}</Heading>
-          <Text>{productData.description}</Text>
+          <Heading size={{ base: "md" }}>{title}</Heading>
+          <Text
+            color='gray.500'
+            mt={2}
+            fontSize='sm'
+          >
+            {description}
+          </Text>
         </Box>
       </CardBody>
 
       <CardFooter
         justify='space-between'
+        alignItems='center'
         sx={{
           "& > button": {
             minW: "136px"
           }
         }}
       >
-        <Stack
-          direction='column'
-          gap={6}
+        <Heading
+          color='green.400'
+          fontSize='2xl'
         >
-          <Box>
-            <Box
-              display='flex'
-              flexDir='column'
-            >
-              <DisplayDiscount
-                percent={productData.discount}
-                priceDiscount={productData.price.before_discount}
-              />
-              <Text
-                color='orange.500'
-                fontWeight='bold'
-                fontSize='lg'
-              >
-                {productData.price.after_discount}
-              </Text>
-            </Box>
-            <PopoverBenefitProduct
-              triggerElement={
-                <Button
-                  variant='link'
-                  size='sm'
-                  colorScheme='green'
-                  rightIcon={<BsChevronDown />}
-                >
-                  Yang kamu dapatkan
-                </Button>
-              }
-            >
-              <PopoverArrow />
-              <PopoverHeader textAlign='center'>Benefits</PopoverHeader>
-              <PopoverCloseButton />
-              <PopoverBody>
-                <List spacing={3}>
-                  {productData.fitur[0].list_fitur
-                    .slice(0, 6)
-                    .map((item, index) => (
-                      <ListItem key={index}>
-                        <ListIcon
-                          as={MdCheckCircle}
-                          color='green.500'
-                        />
-                        {item}
-                      </ListItem>
-                    ))}
-                </List>
-              </PopoverBody>
-            </PopoverBenefitProduct>
-          </Box>
-        </Stack>
+          {price}
+        </Heading>
+        <Button
+          onClick={handleClick}
+          variant='solid'
+          rightIcon={<BiCartAdd />}
+          size='sm'
+        >
+          Buy
+        </Button>
       </CardFooter>
     </Card>
   );

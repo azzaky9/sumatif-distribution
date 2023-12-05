@@ -34,7 +34,8 @@ const createListMenu = (displayName: string, to: string) => ({
 export const menuListData = [
   createListMenu("Home", "#home"),
   createListMenu("Benefits", "#benefits"),
-  createListMenu("Why us", "#why-us")
+  createListMenu("Why us", "#why-us"),
+  createListMenu("Product", "#product")
 ];
 
 export default function MobileDrawer(props: Props) {

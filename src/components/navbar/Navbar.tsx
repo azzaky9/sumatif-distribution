@@ -5,8 +5,6 @@ import {
   Box,
   Flex,
   IconButton,
-  useBreakpointValue,
-  useDisclosure,
   useMediaQuery
 } from "@chakra-ui/react";
 import { RxHamburgerMenu } from "react-icons/rx";

@@ -40,7 +40,7 @@ export default function OnsiteLearning() {
         fontSize='3xl'
       >
         <Highlight
-          query='Onsite Learning'
+          query='adipisicing elit'
           styles={{
             bg: "blackAlpha.200",
             px: 2,
@@ -49,7 +49,7 @@ export default function OnsiteLearning() {
             color: "orange.500"
           }}
         >
-          Onsite Learning Belajar Lebih Menyenangkan dengan metode Tatap Muka
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </Highlight>
       </Heading>
       <Box
@@ -63,11 +63,9 @@ export default function OnsiteLearning() {
           size='sm'
           textAlign={{ base: "start", lg: "center" }}
         >
-          Selain pembelajaran secara online by ruangguru, Sumatif juga
-          menyediakan bimbingan belajar secara tatap muka. Guru-guru yang
-          mengajarnya juga telah diseleksi dengan ketat agar dapat menyesuaikan
-          dengan krikulum merdeka dan menyenangkan. Kenapa bimbingan belajar
-          tatap muka dibutuhkan oleh siswa?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni numquam
+          corrupti quas rem voluptatem sunt praesentium. Necessitatibus ad
+          laudantium fugit.
         </Text>
       </Box>
 

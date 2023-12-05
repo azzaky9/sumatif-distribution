@@ -20,12 +20,12 @@ export type Price = {
 };
 
 export type ProductPackage = {
-  id: string;
+  id?: string;
   title: string;
   description: string;
-  fitur: Feature[];
-  discount: number;
-  group_by_month: 1;
+  fitur?: Feature[];
+  discount?: number;
+  group_by_month?: 1;
   price: Price;
 };
 

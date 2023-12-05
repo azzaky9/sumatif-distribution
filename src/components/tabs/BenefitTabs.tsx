@@ -21,8 +21,8 @@ export default function BenefitTabs() {
           ))}
         </TabList>
         <TabPanels>
-          <GetPanel panelType='ruang_belajar' />
-          <GetPanel panelType='brain_academy' />
+          <GetPanel panelType='ppg' />
+          <GetPanel panelType='superParenting' />
         </TabPanels>
       </Tabs>
     </>

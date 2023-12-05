@@ -11,9 +11,9 @@ export default function Home() {
     <Box as='main'>
       <Header />
       <Benefit />
-      <RecommendedCourse />
       <OnsiteLearning />
       <WhyUs />
+      <RecommendedCourse />
     </Box>
   );
 }

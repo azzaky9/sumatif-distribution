@@ -104,10 +104,7 @@ export default function Footer() {
             </Text>
           </Box>
         </Box>
-        <FooterList
-          heading='Product'
-          list={productList}
-        />
+     
         <FooterList
           heading='Sections'
           list={pagesFooter}
@@ -131,7 +128,7 @@ export default function Footer() {
               icons={
                 <BiLogoGmail style={{ color: "white", fontSize: "1.1rem" }} />
               }
-              displayText='ptsumatif@gmail.com'
+              displayText='adm.sumatif@gmail.com'
             />
             <ButtonWithText
               icons={
@@ -139,23 +136,7 @@ export default function Footer() {
                   style={{ color: "white", fontSize: "0.8rem" }}
                 />
               }
-              displayText='(+62) 82367565888'
-            />
-            <ButtonWithText
-              icons={
-                <BsFillTelephoneFill
-                  style={{ color: "white", fontSize: "0.8rem" }}
-                />
-              }
-              displayText='(+62) 81269259444'
-            />
-            <ButtonWithText
-              icons={
-                <BsFillTelephoneFill
-                  style={{ color: "white", fontSize: "0.8rem" }}
-                />
-              }
-              displayText='(+62) 8119307002'
+              displayText='+62 895-2144-7395'
             />
           </Stack>
         </Box>
@@ -173,7 +154,7 @@ const ButtonWithText: React.FC<TPropBtnWithText> = (props) => {
   const { icons, displayText } = props;
 
   return (
-    <Flex gap={4}>
+    <Flex gap={4} alignItems="center" >
       <IconButton
         size='sm'
         icon={icons}
@@ -211,9 +192,9 @@ const FooterList = ({ heading, list }: Props) => {
         width='full'
         maxWidth={{ base: "320px" }}
         direction='column'
-        gap={{ base: 2, lg: 6 }}
+        gap={{ base: 2, lg: 8 }}
       >
-        <List listStyleType='none'>
+        <List listStyleType='none' >
           {list.map((item, index) => (
             <Link
               href={item.linkTo ?? undefined}
@@ -221,7 +202,7 @@ const FooterList = ({ heading, list }: Props) => {
               color={{ base: "gray.500" }}
               fontSize={{ base: "sm", lg: "md" }}
             >
-              <ListItem>{item.text}</ListItem>
+              <ListItem  mb={2} >{item.text}</ListItem>
             </Link>
           ))}
         </List>

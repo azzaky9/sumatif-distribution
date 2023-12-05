@@ -1,8 +1,17 @@
 "use client";
 
-import { Box, Button, Heading, Flex, Image, Highlight } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  Flex,
+  Image,
+  Img,
+  Highlight
+} from "@chakra-ui/react";
 import BenefitTabs from "../tabs/BenefitTabs";
-import BenefitsImage from "../../../public/images/pretty-asian-teacher-smiling-camera-back-classroom-elementary-school-vintage-effect-style-pictures.jpg";
+import BenefitsImage from "../../../public/images/second-section.webp";
+import MarkText from "../mark/MarkText";
 
 export default function Benefit() {
   return (
@@ -31,11 +40,11 @@ export default function Benefit() {
           top='12'
         />
 
-        <Image
-          rounded="xl"
+        <Img
+          rounded='xl'
           alt='Benefit_section_picture'
           src={BenefitsImage.src}
-          objectFit="contain"
+          objectFit='contain'
           width={650}
           height={500}
         />
@@ -52,18 +61,11 @@ export default function Benefit() {
             textAlign={{ base: "start", lg: "start" }}
             w={{ md: "85%", lg: "full" }}
           >
-            <Highlight
-              query='Berkualitas'
-              styles={{
-                bg: "orange.50",
-                px: 2,
-                py: 1,
-                rounded: "xl",
-                color: "orange.500"
-              }}
-            >
-              Pilihan Pelatihan Berkualitas
-            </Highlight>
+            <MarkText
+              text='Pilihan pelatihan berkualitas'
+              mark='berkualitas'
+              variant='brand'
+            />
           </Heading>
         </Box>
 

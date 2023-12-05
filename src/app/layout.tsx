@@ -2,11 +2,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers as ChakraUiProvider } from "@/provider-configs/chakraui/ChakraProvider";
-import Navbar from "@/components/navbar/Navbar";
-import { Box } from "@chakra-ui/react";
 import { PriceProvider } from "@/context/PriceContext";
-import Footer from "@/components/sections/Footer";
 import RQProviders from "@/provider-configs/reactquery/RQProvider";
+import BaseLayout from "@/components/layout/BaseLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,11 +24,7 @@ export default function RootLayout({
         <RQProviders>
           <ChakraUiProvider>
             <PriceProvider>
-              <Box>
-                <Navbar />
-              </Box>
-              {children}
-              <Footer />
+              <BaseLayout>{children}</BaseLayout>
             </PriceProvider>
           </ChakraUiProvider>
         </RQProviders>

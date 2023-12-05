@@ -10,12 +10,11 @@ import {
   ListIcon,
 } from "@chakra-ui/react";
 import { MdCheckCircle } from "react-icons/md";
-import brain_academy from "../../../public/cms_content/brain_academy.json";
-import ruang_belajar from "../../../public/cms_content/ruang_belajar.json";
-import onsite_learning from "../../../public/cms_content/onsite_learing.json";
+import superParenting from "../../../public/cms_content/super-parenting-benefit.json";
+import pendidikanProfesi from "../../../public/cms_content/pelatihan-profesi-guru.json"
 
 type Props = {
-  panelType: "brain_academy" | "ruang_belajar" | "onsite_learning";
+  panelType: "superParenting" | "ppg" ;
   includeTitle?: boolean;
 };
 
@@ -23,9 +22,8 @@ export default function GetPanel(props: Props) {
   const { includeTitle, panelType } = props;
 
   const mapDataByKey = {
-    brain_academy,
-    ruang_belajar,
-    onsite_learning
+    superParenting,
+    "ppg": pendidikanProfesi,
   };
 
   return (

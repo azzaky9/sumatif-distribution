@@ -75,7 +75,11 @@ export default function WhyUs() {
           w={{ lg: "80%" }}
           ms={{ lg: "60px" }}
         >
-          <Heading textAlign="center" mb={2} fontSize={{ base: "2xl", md: "xl", lg: "3xl" }}>
+          <Heading
+            textAlign='center'
+            mb={2}
+            fontSize={{ base: "2xl", md: "xl", lg: "3xl" }}
+          >
             <Highlight
               query='Mengapa?'
               styles={{
@@ -83,14 +87,12 @@ export default function WhyUs() {
                 px: 2,
                 py: 1,
                 rounded: "xl",
-                color: "orange.500",
-                
+                color: "orange.500"
               }}
             >
               Alasan Mengapa? Harus Berlangganan Di Sumatif
             </Highlight>
           </Heading>
-        
         </Box>
 
         <SimpleGrid

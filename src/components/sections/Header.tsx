@@ -9,8 +9,9 @@ import {
   Highlight
 } from "@chakra-ui/react";
 import { HiArrowRight as ArrowRightIcon } from "react-icons/hi2";
-import illustration from "../../../public/images/happy-cheerful-asian-family-dad-mom-kids-having-fun-using-digital-tablet-video-call-sofa-house.jpg";
-import { Image } from "@chakra-ui/react";
+import illustration from "../../../public/images/header-right-discover.webp";
+import { Image, Img } from "@chakra-ui/react";
+import { Image as NextImage } from "@chakra-ui/next-js";
 // import { motion } from "framer-motion";
 
 export default function Header() {
@@ -52,7 +53,7 @@ export default function Header() {
                 color: "orange.500"
               }}
             >
-            Kemajuan Profesional & Keluarga Berkualitas dengan Sumatif!
+              Kemajuan Profesional & Keluarga Berkualitas dengan Sumatif!
             </Highlight>
           </Text>
 
@@ -85,9 +86,18 @@ export default function Header() {
           placeContent='center'
           position='relative'
         >
-          <Box position="absolute" w="100%" h={310} left={5} top={5} p={10} bg="gray.100" rounded="xl" zIndex={-10}  />
-          <Image
-            data-aos='fade-down'
+          <Box
+            position='absolute'
+            w='100%'
+            h={310}
+            left={5}
+            top={5}
+            p={10}
+            bg='gray.100'
+            rounded='xl'
+            zIndex={-10}
+          />
+          <Img
             ml={20}
             height={310}
             rounded='lg'

@@ -24,7 +24,6 @@ export default function DesktopMenuList() {
           {data.displayName}
         </ChakraLink>
       ))}
-      <ProductMenu />
     </Box>
   );
 }
