@@ -1,4 +1,4 @@
-import { Box, Image, Stack, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import PriceList from "@/components/sections/PriceList";
 import TopCardRuangBelajar from "@/components/card/TopCardRuangBelajar";
 

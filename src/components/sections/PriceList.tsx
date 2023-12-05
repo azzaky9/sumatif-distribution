@@ -180,7 +180,7 @@ export default function PriceList() {
   useEffect(() => {
     route.push(`/ruang_belajar?jenjang=sd&kelas=1-2&month_duration=1`);
     handleOpenModal();
-  }, []);
+  }, [route]);
 
   // const disclosureProp = useDisclosure();
 

@@ -1,6 +1,5 @@
 import { Box, Grid, Heading, Highlight, List } from "@chakra-ui/react";
 import PriceListBrAcademy from "@/components/sections/PriceListBrAcademy";
-import PriceList from "@/components/sections/PriceList";
 import { GenerateChildList } from "@/components/card/TopCardRuangBelajar";
 
 const brainAcademyListBenefit = [

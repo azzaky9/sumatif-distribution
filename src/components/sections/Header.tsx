@@ -99,6 +99,7 @@ export default function Header() {
           />
           <Img
             ml={20}
+            width="auto"
             height={310}
             rounded='lg'
             src={illustration.src}

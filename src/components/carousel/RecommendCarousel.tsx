@@ -1,14 +1,12 @@
 "use client";
 
-import { useRef } from "react";
 import { ProductPackage } from "@/context/PriceContext";
 import { useMediaQuery } from "@chakra-ui/react";
 
 import Carousel from "./Carousel";
 import SliderButton from "../button/SliderButton";
 
-import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperType } from "swiper";
+import { SwiperProps } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { useSwiperSlide } from "@/hooks/useSwiperSlide";
 

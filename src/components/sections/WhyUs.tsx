@@ -11,11 +11,9 @@ import {
 import CardPoint from "../card/CardPoint";
 import { GiReceiveMoney } from "react-icons/gi";
 import whyUsContent from "../../../public/cms_content/why_us.json";
-import { FaMoneyBill } from "react-icons/fa";
 import {
   BsPersonWorkspace,
   BsFolder2Open,
-  BsPersonVideo3
 } from "react-icons/bs";
 import { TbFileLike } from "react-icons/tb";
 import { GiTeacher } from "react-icons/gi";
@@ -90,7 +88,7 @@ export default function WhyUs() {
                 color: "orange.500"
               }}
             >
-              Alasan Mengapa? Harus Berlangganan Di Sumatif
+              Alasan Mengapa Harus Berlangganan Di Sumatif ?
             </Highlight>
           </Heading>
         </Box>

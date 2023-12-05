@@ -1,21 +1,15 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  UseDisclosureProps,
-  Button,
-  Flex,
-  Link as ChakraLink,
-  Box
+  Link as ChakraLink
 } from "@chakra-ui/react";
-import Link from "next/link";
 import NavbarLogo from "../NavbarLogo";
 import { useRouter } from "next/navigation";
 import ProductMenu from "../ProductMenu";

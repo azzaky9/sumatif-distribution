@@ -1,5 +1,4 @@
 import { Box } from "@chakra-ui/react";
-import ProductProvide from "@/components/sections/ProductProvide";
 import Header from "@/components/sections/Header";
 import Benefit from "@/components/sections/Benefit";
 import WhyUs from "@/components/sections/WhyUs";

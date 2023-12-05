@@ -49,7 +49,7 @@ const productList: List[] = [
   {
     text: "Brain Academy",
     linkTo: "/brain_academy"
-  },
+  }
   // {
   //   text: "Onsite Learning",
   //   linkTo: "/onsite_learning"
@@ -104,7 +104,7 @@ export default function Footer() {
             </Text>
           </Box>
         </Box>
-     
+
         <FooterList
           heading='Sections'
           list={pagesFooter}
@@ -154,7 +154,10 @@ const ButtonWithText: React.FC<TPropBtnWithText> = (props) => {
   const { icons, displayText } = props;
 
   return (
-    <Flex gap={4} alignItems="center" >
+    <Flex
+      gap={4}
+      alignItems='center'
+    >
       <IconButton
         size='sm'
         icon={icons}
@@ -194,16 +197,25 @@ const FooterList = ({ heading, list }: Props) => {
         direction='column'
         gap={{ base: 2, lg: 8 }}
       >
-        <List listStyleType='none' >
+        <List
+          as='ul'
+          role='list'
+          listStyleType='none'
+        >
           {list.map((item, index) => (
-            <Link
-              href={item.linkTo ?? undefined}
+            <ListItem
               key={index}
-              color={{ base: "gray.500" }}
-              fontSize={{ base: "sm", lg: "md" }}
+              as='li'
             >
-              <ListItem  mb={2} >{item.text}</ListItem>
-            </Link>
+              <Link
+                role='listitem'
+                href={item.linkTo ?? undefined}
+                color={{ base: "gray.500" }}
+                fontSize={{ base: "sm", lg: "md" }}
+              >
+                {item.text}
+              </Link>
+            </ListItem>
           ))}
         </List>
       </Flex>

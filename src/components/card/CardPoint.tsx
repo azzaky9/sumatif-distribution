@@ -1,15 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Card,
-  CardHeader,
-  Heading,
-  CardBody,
-  Button,
-  Text,
-  Box
-} from "@chakra-ui/react";
+import { Card, Heading, CardBody, Text, Box } from "@chakra-ui/react";
 
 type Props = {
   icons: JSX.Element;
@@ -24,8 +16,7 @@ export default function CardPoint(props: Props) {
     <Card
       px={{ lg: 6 }}
       py={{ lg: 4 }}
-      variant={{ base: 'elevated' }}
-      
+      variant={{ base: "elevated" }}
     >
       <CardBody>
         <Box

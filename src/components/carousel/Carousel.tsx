@@ -28,7 +28,11 @@ export default function Carousel(props: Props) {
     data: ProductPackage
   ) => {
     return modelType === "DISCOVER" ? (
-      <RecommendCourseCard productData={data} />
+      <RecommendCourseCard
+        description={data.description}
+        price={data.price.after_discount}
+        title={data.title}
+      />
     ) : (
       <CardPrice
         data={data}

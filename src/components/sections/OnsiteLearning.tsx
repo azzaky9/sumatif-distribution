@@ -11,7 +11,7 @@ import {
   ListItem,
   ListIcon
 } from "@chakra-ui/react";
-import bgOnsiteContent from "../../../public/images/confident-teacher-explaining-lesson-pupils.jpg";
+import bgOnsiteContent from "../../../public/images/middle-section-teacher.webp";
 import { MdCheckCircle } from "react-icons/md";
 
 const onsiteLearningBenefit = [

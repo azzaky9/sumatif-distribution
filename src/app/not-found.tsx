@@ -1,16 +1,9 @@
 import Link from "next/link";
 import { headers } from "next/headers";
-import {
-  Box,
-  Heading,
-  Highlight,
-  Link as ChakraLink
-} from "@chakra-ui/react";
+import { Box, Heading, Highlight, Link as ChakraLink } from "@chakra-ui/react";
 
 export default function NotFound() {
   const headerList = headers();
-
-  console.log(`mark`, headerList.get("domain"));
 
   return (
     <Box
@@ -45,7 +38,11 @@ export default function NotFound() {
         </Highlight>
       </Heading>
 
-      <ChakraLink mt={5} textAlign="center" color='oraneg.500'>
+      <ChakraLink
+        mt={5}
+        textAlign='center'
+        color='oraneg.500'
+      >
         <Link href='/'>Back to homepage.</Link>
       </ChakraLink>
     </Box>

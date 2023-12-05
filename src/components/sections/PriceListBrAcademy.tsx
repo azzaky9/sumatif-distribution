@@ -88,7 +88,7 @@ export default function PriceListBrAcademy() {
 
   useEffect(() => {
     onOpen();
-  }, []);
+  }, [onOpen]);
 
   return (
     <>

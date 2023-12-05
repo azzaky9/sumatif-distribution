@@ -3,7 +3,6 @@
 import { Box, Link as ChakraLink } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/next-js";
 import { menuListData } from "../mobile-nav/MobileDrawer";
-import ProductMenu from "../ProductMenu";
 
 export default function DesktopMenuList() {
   return (
