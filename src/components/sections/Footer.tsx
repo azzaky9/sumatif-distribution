@@ -124,12 +124,15 @@ export default function Footer() {
             direction='column'
             spacing={4}
           >
-            <ButtonWithText
-              icons={
-                <BiLogoGmail style={{ color: "white", fontSize: "1.1rem" }} />
-              }
-              displayText='adm.sumatif@gmail.com'
-            />
+            <a href='mailto:adm.sumatif@gmail.com?subject=ask'>
+              <ButtonWithText
+                icons={
+                  <BiLogoGmail style={{ color: "white", fontSize: "1.1rem" }} />
+                }
+                displayText='adm.sumatif@gmail.com'
+              />
+            </a>
+            <a href="https://wa.me/+6289521447395?text=Hello%20Admin">
             <ButtonWithText
               icons={
                 <BsFillTelephoneFill
@@ -138,6 +141,7 @@ export default function Footer() {
               }
               displayText='+62 895-2144-7395'
             />
+            </a>
           </Stack>
         </Box>
       </Box>

@@ -10,30 +10,31 @@ import { type Product } from "../card/RecommendCourseCard";
 
 const productData: Product[] = [
   {
-    title: "PPG Pendidikan Profesi Guru",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, repellendus?",
-    price: "-"
-  },
-  {
     title: "Super Parenting Training and Family Gathering:",
     description:
       "Program unik yang menghadirkan pelatihan super untuk orangtua dengan ajang kumpul keluarga. Temukan di sini cara-cara baru dalam membesarkan anak dan mempererat hubungan keluarga Anda,",
     price: "Rp 1.600.000"
   },
   {
-    title: "Program Kenaikan Pangkat.",
+    title: "Pelatihan Tatap muka harga per rombel / modul.",
     description:
       "Minimal 50 orang per rombel/modul. Ada 3 modul pelatihan lengkap yang disediakan.",
-    price: "-"
+    price: "-",
+    benefit: [
+      "Materi pelatihan",
+      "Tools Pelatihan",
+      "Konsumsi",
+      "Akomodasi",
+      "Sertifikat"
+    ],
+    priceByCategories: [
+      ["50", "Rp 3.600.000"],
+      ["60", "Rp 3.300.000"]
+    ]
   }
 ];
 
 export default function RecommendedCourse() {
-  const { priceDiscoverQ } = usePrice();
-
-  const { isLoading, data, isRefetching } = priceDiscoverQ;
-
   return (
     <Box
       id='products'
@@ -69,13 +70,13 @@ export default function RecommendedCourse() {
       </Flex>
 
       <Flex
-        h={400}
+        h={{ base: "fit-content", lg: 500 }}
         w='full'
         direction={{ base: "column", lg: "row" }}
         pt={4}
         pb={10}
         justifyContent='center'
-        alignItems='center'
+        alignContent={{ base: "center", lg: "baseline" }}
         gap={5}
       >
         {productData.map((product, index) => (

@@ -74,12 +74,11 @@ export default function WhyUs() {
           ms={{ lg: "60px" }}
         >
           <Heading
-            textAlign='center'
             mb={2}
             fontSize={{ base: "2xl", md: "xl", lg: "3xl" }}
           >
             <Highlight
-              query='Mengapa?'
+              query='Sumatif ?'
               styles={{
                 bg: "orange.50",
                 px: 2,
@@ -88,7 +87,7 @@ export default function WhyUs() {
                 color: "orange.500"
               }}
             >
-              Alasan Mengapa Harus Berlangganan Di Sumatif ?
+              Mengapa Harus Berlangganan Di Sumatif ?
             </Highlight>
           </Heading>
         </Box>

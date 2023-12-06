@@ -3,27 +3,43 @@
 import {
   Box,
   Heading,
-  Highlight,
   Image,
-  SimpleGrid,
   Text,
   List,
   ListItem,
-  ListIcon
+  ListIcon,
+  Flex
 } from "@chakra-ui/react";
 import bgOnsiteContent from "../../../public/images/middle-section-teacher.webp";
 import { MdCheckCircle } from "react-icons/md";
+import MarkText from "../mark/MarkText";
 
 const onsiteLearningBenefit = [
-  "Bimbingan diadakan di sekolah, sehingga pihak sekolah dapat mengontrol langsung proses pembelajarannya.",
-  "Guru-gurunya berasal dari PTN ternama dan usianya relatif masih muda, sehingga akan lebih akrab dengan siswa",
-  "Materi disampaikan dengan cara yang menyenangkan, sehingga akan mudah dicerna oleh siswa",
-  "Secara finansial, siswa akan relatif lebih hemat karena tidak perlu mengeluarkan biaya tambahan untuk ongkos ke luar sekolah",
-  "Siswa akan merasa relatif lebih aman, karena tidak perlu pergi ke luar sekolah untuk melakukan bimbingan belajar",
-  "Siswa juga tidak akan capek dan tidak perlu buang waktu lagi untuk mencari pembelajaran tambahan, karena semuanya telah difasilitasi di sekolah",
-  "Siswa juga bisa berdiskusi langsung ke guru-guru Sumatif diluar jam belajarnya, termasuk juga dilokasi kantor Sumatif.",
-  "Selain menyampaikan materi pembelajaran, guru-guru Sumatif juga bertanggung jawab mengajarkan moral kepada siswa. Sehingga siswa diharapkan tidak hanya pintar secara intelektual, tetapi juga pintar secara emosional dan spiritual",
-  "Belajar akan terasa menyenangkan karena dilakukan dengan komunikasi dua arah"
+  {
+    title: "Konsultasi Mendalam",
+    description:
+      "Kami melakukan konsultasi yang mendalam untuk memahami masalah yang dihadapi klien secara spesifik."
+  },
+  {
+    title: "Analisis Produk Khusus",
+    description:
+      "Menyediakan beragam produk unggulan yang sesuai dengan kebutuhan solusi spesifik klien."
+  },
+  {
+    title: "Solusi yang Disesuaikan",
+    description:
+      "Menggabungkan produk-produk kami dalam solusi yang disesuaikan untuk menyelesaikan masalah yang dihadapi klien."
+  },
+  {
+    title: "Panduan Implementasi",
+    description:
+      "Memberikan panduan yang jelas dan terarah dalam implementasi solusi yang diberikan."
+  },
+  {
+    title: "Evaluasi Berkelanjutan",
+    description:
+      "Menawarkan evaluasi secara terus-menerus untuk memastikan kesesuaian solusi dengan perubahan yang terjadi."
+  }
 ];
 
 export default function OnsiteLearning() {
@@ -39,18 +55,11 @@ export default function OnsiteLearning() {
         textAlign={{ base: "start", lg: "center" }}
         fontSize='3xl'
       >
-        <Highlight
-          query='adipisicing elit'
-          styles={{
-            bg: "blackAlpha.200",
-            px: 2,
-            py: 1,
-            rounded: "xl",
-            color: "orange.500"
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </Highlight>
+        <MarkText
+          mark='Adaptif'
+          text='Transformasi Klien Melalui Solusi Adaptif'
+          variant='brand'
+        />
       </Heading>
       <Box
         w='full'
@@ -63,9 +72,12 @@ export default function OnsiteLearning() {
           size='sm'
           textAlign={{ base: "start", lg: "center" }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni numquam
-          corrupti quas rem voluptatem sunt praesentium. Necessitatibus ad
-          laudantium fugit.
+          Dalam mencari solusi yang presisi dan terfokus terhadap masalah yang
+          dihadapi, pendekatan sumatif kami menjadi tombak utama. Dari pemahaman
+          yang mendalam hingga implementasi solusi yang terukur, kami menawarkan
+          pendekatan yang spesifik dan efektif yang didukung oleh produk-produk
+          unggulan kami. Dengan solusi yang dirancang khusus untuk setiap
+          tantangan, kami memastikan transformasi nyata bagi klien kami.
         </Text>
       </Box>
 
@@ -108,12 +120,22 @@ export default function OnsiteLearning() {
                 rounded='xl'
                 key={index}
               >
-                <ListIcon
-                  as={MdCheckCircle}
-                  color='green.500'
-                />
-
-                {benefit}
+                <Flex
+                  flexDir='column'
+                  gap={4}
+                >
+                  <ListIcon
+                    as={MdCheckCircle}
+                    color='green.500'
+                  />
+                  <Heading
+                    color='gray.800'
+                    fontSize='md'
+                  >
+                    {benefit.title}
+                  </Heading>
+                </Flex>
+                <Text color="gray.600" >{benefit.description}</Text>
               </ListItem>
             ))}
           </List>
