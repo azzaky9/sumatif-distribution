@@ -13,7 +13,7 @@ import {
   ListItem,
   ListIcon,
   Flex,
-  Tooltip
+  Tooltip,
 } from "@chakra-ui/react";
 import RadioSelection from "../input/RadioRombel";
 import { BiCartAdd } from "react-icons/bi";
@@ -26,16 +26,26 @@ export type Product = {
   title: string;
   description: string;
   price: string;
+  displayPrice?: boolean;
   cover?: string;
   benefit?: string[];
   priceByCategories?: ["50" | "60", string][];
+  linkedTo: string;
 };
 
 export default function ProductCard(props: Product) {
   const { setProductSelection } = usePrice();
 
-  const { description, title, price, cover, benefit, priceByCategories } =
-    props;
+  const {
+    description,
+    title,
+    price,
+    cover,
+    displayPrice,
+    benefit,
+    priceByCategories,
+    linkedTo,
+  } = props;
 
   const router = useRouter();
 
@@ -44,7 +54,7 @@ export default function ProductCard(props: Product) {
   const getPriceByCategory = () => {
     if (priceByCategories) {
       return priceByCategories.find(
-        (price) => price[0] === currentSelectCategory
+        (price) => price[0] === currentSelectCategory,
       )?.[1];
     }
 
@@ -57,46 +67,33 @@ export default function ProductCard(props: Product) {
       description,
       price: {
         after_discount: getPriceByCategory() || "",
-        before_discount: getPriceByCategory() || ""
-      }
+        before_discount: getPriceByCategory() || "",
+      },
     });
 
-    router.push("/payment");
+    router.push(linkedTo);
   };
 
   return (
     <Card
       mx={{ base: "auto", lg: 0 }}
-      variant='elevated'
-      rounded='3xl'
+      variant="elevated"
+      rounded="3xl"
       maxW={360}
       maxH={600}
-      h='fit-content'
+      h="fit-content"
     >
       <CardBody>
-        <Box
-          display='flex'
-          flexDir='column'
-        >
+        <Box display="flex" flexDir="column">
           <Heading size={{ base: "md" }}>{title}</Heading>
-          <Text
-            color='gray.500'
-            mt={2}
-            fontSize='sm'
-          >
+          <Text color="gray.500" mt={2} fontSize="sm">
             {description}
           </Text>
-          <List
-            spacing={3}
-            mt={4}
-          >
+          <List spacing={3} mt={4}>
             {benefit &&
               benefit.map((b, index) => (
                 <ListItem key={index}>
-                  <ListIcon
-                    as={MdCheckCircle}
-                    color='green.500'
-                  />
+                  <ListIcon as={MdCheckCircle} color="green.500" />
                   {b}
                 </ListItem>
               ))}
@@ -105,48 +102,41 @@ export default function ProductCard(props: Product) {
       </CardBody>
 
       <CardFooter
-        display='flex'
-        flexDirection='column'
+        display="flex"
+        flexDirection="column"
         sx={{
           "& > button": {
-            minW: "136px"
-          }
+            minW: "136px",
+          },
         }}
       >
-        <Flex
-          flexDir='column'
-          mb={4}
-        >
+        <Flex flexDir="column" mb={4}>
           {priceByCategories && (
-            <Flex
-              gap={3}
-              alignItems='center'
-            >
+            <Flex gap={3} alignItems="center">
               <RadioSelection
                 parentState={currentSelectCategory}
                 setParentState={setCurrentSelectCategory}
                 priceOption={priceByCategories}
               />
-              <BaseTooltip label='minimum peserta / kelompok dan harga yang tertera di tentukan dari pilihan category'>
+              <BaseTooltip label="minimum peserta / kelompok dan harga yang tertera di tentukan dari pilihan category">
                 <span style={{ fontSize: "0.8rem" }}>
                   <FaInfo />
                 </span>
               </BaseTooltip>
             </Flex>
           )}
-          <Heading
-            mt={4}
-            color='green.400'
-            fontSize='2xl'
-          >
-            {getPriceByCategory() || ""}
-          </Heading>
+
+          {displayPrice && (
+            <Heading mt={4} color="green.400" fontSize="2xl">
+              {getPriceByCategory() || ""}
+            </Heading>
+          )}
         </Flex>
         <Button
           onClick={handleClick}
-          variant='solid'
+          variant="solid"
           rightIcon={<BiCartAdd />}
-          size='sm'
+          size="sm"
         >
           Buy
         </Button>
@@ -161,10 +151,7 @@ type Props = {
 };
 
 const BaseTooltip: React.FC<Props> = ({ label, children }) => (
-  <Tooltip
-    label={label}
-    aria-label='Important message'
-  >
+  <Tooltip label={label} aria-label="Important message">
     {children}
   </Tooltip>
 );

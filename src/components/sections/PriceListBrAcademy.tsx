@@ -22,7 +22,6 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import ModalBrAcademyKelas from "../modal/ModalBrAcademyKelas";
 import { Grid, Text } from "@chakra-ui/react";
-import brainacademyLogo from "../../../public/images/logo_BA.svg";
 import { BsChevronDown } from "react-icons/bs";
 import { DisplayNotFound } from "../utils/DisplayNotFound";
 import CardPrice from "../card/CardPrice";
@@ -106,13 +105,7 @@ export default function PriceListBrAcademy() {
         p={10}
       >
         <Box mx='auto'>
-          <Image
-            w={{ base: "25" }}
-            h={{ base: "14" }}
-            m={5}
-            src={brainacademyLogo.src}
-            alt='brain_academy_icons'
-          />
+          
         </Box>
 
         <Grid

@@ -1,9 +1,15 @@
+"use client";
+
 import Link from "next/link";
-import { headers } from "next/headers";
 import { Box, Heading, Highlight, Link as ChakraLink } from "@chakra-ui/react";
+import { usePathname } from "next/navigation";
 
 export default function NotFound() {
-  const headerList = headers();
+  const path = usePathname();
+
+  if (path === "/") {
+    return null;
+  }
 
   return (
     <Box
