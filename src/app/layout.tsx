@@ -9,18 +9,18 @@ import BaseLayout from "@/components/layout/BaseLayout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sumatif",
+  title: "reSumatif",
   description:
-    "Di Sumatif, kami percaya bahwa momen berharga layak untuk dikenang selamanya. Kami hadir untuk mengubah setiap acara menjadi pengalaman yang tak terlupakan, mulai dari kehangatan family gathering hingga pentingnya kenaikan pangkat dan pendidikan profesi guru."
+    "Di Sumatif, kami percaya bahwa momen berharga layak untuk dikenang selamanya. Kami hadir untuk mengubah setiap acara menjadi pengalaman yang tak terlupakan, mulai dari kehangatan family gathering hingga pentingnya kenaikan pangkat dan pendidikan profesi guru.",
 };
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={inter.className}>
         <RQProviders>
           <ChakraUiProvider>

@@ -25,19 +25,17 @@ export default function Carousel(props: Props) {
 
   const getDisplayerComp = (
     modelType: Props["displayModel"],
-    data: ProductPackage
+    data: ProductPackage,
   ) => {
     return modelType === "DISCOVER" ? (
       <RecommendCourseCard
+        linkedTo=""
         description={data.description}
         price={data.price.after_discount}
         title={data.title}
       />
     ) : (
-      <CardPrice
-        data={data}
-        hideBuyButton={false}
-      />
+      <CardPrice data={data} hideBuyButton={false} />
     );
   };
 
@@ -53,18 +51,15 @@ export default function Carousel(props: Props) {
         </SwiperSlide>
       ))}
       <Box
-        position='absolute'
+        position="absolute"
         bottom={{ base: "-50px", lg: "5px" }}
         left={{ lg: "-20px", base: "0" }}
         w={{ base: "100%" }}
-        display='grid'
+        display="grid"
         placeContent={{ base: "center", lg: "end" }}
         zIndex={20}
       >
-        <Box
-          display='flex'
-          gap={8}
-        >
+        <Box display="flex" gap={8}>
           {customButton.previousButton}
           {customButton.nextButton}
         </Box>
