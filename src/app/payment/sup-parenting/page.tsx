@@ -31,7 +31,7 @@ export default function Page() {
 
       await axios.post(url, {
         data: parent,
-        subject: "test package",
+        subject: "Super parenting package",
       });
     } catch (err) {
       if (err instanceof Error) {
