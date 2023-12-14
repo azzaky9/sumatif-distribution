@@ -27,7 +27,7 @@ export default function Page() {
 
   const sendMail = async () => {
     try {
-      const url = `${process.env.NEXT_PUBLIC_API_URL}email`;
+      const url = `${process.env.NEXT_PUBLIC_API_URL}api/email`;
 
       await axios.post(url, {
         data: parent,
